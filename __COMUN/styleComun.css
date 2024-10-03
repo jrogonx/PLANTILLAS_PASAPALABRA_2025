@@ -27,6 +27,7 @@
     --magentaOscuro: #8f1a1f;
 
     --blancoTextos: #fff;
+    --sombra: #1212125c;
 }
 
 html,
@@ -35,7 +36,9 @@ body {
     height: 100%;
     margin: 0px;
     overflow: hidden;
-    font-family: fuenteRegular;
+    font-family: fuenteBold;
+    line-height: 42px;
+    font-size: 40px;
     color: var(--blancoTextos);
 }
 
@@ -52,23 +55,27 @@ div {
     left: 0;
     width: 1920px;
     height: 1080px;
-    font-size: 50px;
     overflow: hidden;
     scale: 1;
 }
 
-.textoSombraNaranja {
-    text-shadow: 4px 4px 3px var(--naranjaOscuro);
+.divTextoPregunta {
+    display: flex;
+    overflow: hidden;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
-.textoSombraAzul {
-    text-shadow: 4px 4px 3px var(--azulOscuro);
+
+.textoSombra {
+    text-shadow: 4px 4px 3px var(--sombra);
 }
 
 /* ----------------------- PROVISIONALES ----------------------- */
 
 .titulo {
-    background-color: #00b7ff;
-    font-size: 50px;
+    background-color: #1a833d;
+    font-size: 40px;
     left: -323px;
     transform: rotate(270deg);
     top: 322px;
@@ -101,8 +108,7 @@ div {
     display: inline-block;
 }
 
-#vref,
-#imgref {
+.ref {
     /* top: 100px;
     right: 100px; */
 

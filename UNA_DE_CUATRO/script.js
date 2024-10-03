@@ -46,7 +46,12 @@ const plantilla_ocultar = () => {
 const plantilla_reset = (delay = 0) => {
     // reseteo a estado inicial listo para lanzar
     setTimeout(() => {
-        //
+        // gsap.set(preguntaImgPastilla, {
+        //     left: -1190,
+        // })
+        // gsap.set(divTextoPregunta, {
+        //     left: -530,
+        // })
     }, delay)
 }
 
@@ -67,23 +72,29 @@ setTimeout(() => {
 
 const plantilla_in = (delay = 0) => {
     setTimeout(() => {
-        // gsap.set(imgPastilla, {
-        //     left: -580,
-        // })
-        // gsap.set(divLetras, {
-        //     left: -530,
-        // })
-        // gsap.to(imgPastilla, {
-        //     duration: 0.7,
-        //     left: 0,
-        //     ease: "power.out",
-        //     onComplete: () => {
-        //         gsap.to(imgExtremoIZDA, {
-        //             duration: 0.2,
-        //             opacity: 0,
-        //         })
-        //     },
-        // })
+        gsap.to(preguntaImgPastilla, {
+            duration: 0.7,
+            left: 0,
+            ease: "power.out",
+            onComplete: () => {
+                gsap.to(preguntaImgExtremoIZDA, {
+                    duration: 0.2,
+                    opacity: 0,
+                })
+            },
+        })
+
+        gsap.to(divTextoPregunta, {
+            delay: 0.3,
+            duration: 0.8,
+            left: 40,
+            ease: "power.out",
+        })
+
+        gsap.to(preguntaImgExtremoIZDA, {
+            duration: 0.2,
+            opacity: 1,
+        })
     }, delay)
 }
 const plantilla_out = (delay = 0) => {
