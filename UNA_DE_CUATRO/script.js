@@ -9,7 +9,7 @@ gsap.ticker.fps(50)
 
 // OBJETOS DOM
 const container = document.getElementById("container")
-container.style.opacity = 0
+// container.style.opacity = 0
 
 const imgPastilla = document.getElementById("imgPastilla")
 

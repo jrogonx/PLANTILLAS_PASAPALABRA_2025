@@ -16,10 +16,16 @@
 }
 
 :root {
-    --naranajaClaro: #ff7d00;
-    --naranjaOscuro: #ff3700;
-    --azulClaro: #007dff;
-    --azulOscuro: #0037ff;
+    --naranajaClaro: #ff8100;
+    --naranjaOscuro: #ff3b02;
+    --azulClaro: #007eff;
+    --azulOscuro: #0034ff;
+
+    --verdeClaro: #10921d;
+    --verdeOscuro: #107136;
+    --magentaClaro: #a91050;
+    --magentaOscuro: #8f1a1f;
+
     --blancoTextos: #fff;
 }
 
@@ -49,6 +55,13 @@ div {
     font-size: 50px;
     overflow: hidden;
     scale: 1;
+}
+
+.textoSombraNaranja {
+    text-shadow: 4px 4px 3px var(--naranjaOscuro);
+}
+.textoSombraAzul {
+    text-shadow: 4px 4px 3px var(--azulOscuro);
 }
 
 /* ----------------------- PROVISIONALES ----------------------- */
@@ -90,13 +103,15 @@ div {
 
 #vref,
 #imgref {
-    top: 0px;
-    left: 0px;
+    /* top: 100px;
+    right: 100px; */
 
     width: 1920px;
     height: 1080px;
+    top: 0px;
+    right: 0px;
 
-    opacity: 1;
+    opacity: 0.6;
     position: absolute;
     z-index: 0;
 }
@@ -104,11 +119,11 @@ div {
 /* -------------------- INTERRUPTORES GENERALES EN PRODUCCIÓN ------------------- */
 
 #container {
-    /* background-color: #282828; */
-    opacity: 0;
+    background-color: #282828;
+    opacity: 1;
 }
 .titulo {
-    opacity: 0;
+    opacity: 1;
 }
 #botonera {
     opacity: 1;
