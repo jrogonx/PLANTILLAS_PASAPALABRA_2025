@@ -1,0 +1,43 @@
+#divPanel {
+    /* background-color: yellow; */
+    height: 230px;
+    width: 100%;
+    bottom: 60px;
+}
+
+#divPastilla {
+    /* background-color: rgb(234, 255, 0); */
+    left: 610px;
+    top: 65px;
+
+    clip-path: url(#clipPastillaPrincipal);
+}
+
+#divLetras {
+    /* background-color: yellow; */
+    left: 40px;
+    bottom: 20px;
+    height: 80px;
+    width: 500px;
+    display: flex;
+    overflow: hidden;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+
+.letras {
+    position: relative;
+    /* background-color: greenyellow; */
+    color: white;
+    font-family: fuenteBlack;
+    font-size: 60px;
+    width: 65px;
+    text-align: center;
+}
+.letrasSombraNaranja {
+    text-shadow: 4px 4px 3px var(--naranjaOscuro);
+}
+.letrasSombraAzul {
+    text-shadow: 4px 4px 3px var(--azulOscuro);
+}
