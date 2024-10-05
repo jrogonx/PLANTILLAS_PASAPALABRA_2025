@@ -1,26 +1,27 @@
 #divPregunta {
-    /* background-color: rgba(234, 255, 0, 0.489); */
+    /* background-color: rgb(255, 0, 0); */
     left: 450px;
     top: 845px;
     width: 1190px;
     height: 130px;
 
-    /* clip-path: url(#clipDivPregunta); */
+    clip-path: url(#clipDivPregunta);
 }
 
 #imgPastillaPregunta {
     position: relative;
     opacity: 1;
-    left: 00px;
+    left: -1180px;
 }
 
 #imgExtremoIzdaPregunta {
-    opacity: 1;
-    left: 0px;
+    opacity: 0;
+    left: -1px;
+    top: -2px;
 }
 #imgExtremoDchaPregunta {
     opacity: 0;
-    right: 0px;
+    right: 10px;
 }
 
 .divTextoPregunta {
@@ -61,13 +62,17 @@
 
 .imgExtremoOpcion {
     /* background-color: rgba(255, 255, 0, 0.527); */
-    height: 95px;
+    opacity: 1;
 }
 .extremoIzda {
     left: 0px;
+    top: 0px;
+    opacity: 0;
 }
 .extremoDcha {
-    left: 331px;
+    left: 326px;
+    top: 0px;
+    opacity: 0;
 }
 
 #divOpcion1 {
@@ -88,7 +93,7 @@
     /* background-color: rgba(255, 255, 0, 0.527); */
     height: 78px;
     width: 348px;
-    top: 9px;
+    top: 10px;
     left: 15px;
 }
 

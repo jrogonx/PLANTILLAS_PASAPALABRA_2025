@@ -23,20 +23,20 @@
         >
             <clipPath id="clipDivPregunta">
                 <circle
-                    cx="64"
-                    cy="61"
+                    cx="62"
+                    cy="63"
                     r="62"
                 />
                 <rect
-                    x="64"
+                    x="63"
                     y="0"
                     width="1050"
                     height="125"
                 />
                 <circle
-                    cx="1120"
-                    cy="60"
-                    r="64"
+                    cx="1118"
+                    cy="63"
+                    r="62"
                 />
             </clipPath>
 
@@ -44,18 +44,18 @@
                 <circle
                     cx="47"
                     cy="47"
-                    r="48"
+                    r="47"
                 />
                 <rect
-                    x="47"
+                    x="52"
                     y="0"
-                    width="280"
+                    width="275"
                     height="95"
                 />
                 <circle
-                    cx="330"
+                    cx="331"
                     cy="47"
-                    r="48"
+                    r="47"
                 />
             </clipPath>
             />
@@ -68,10 +68,8 @@
             /> -->
 
             <div id="divPregunta">
-                <img
-                    id="imgPastillaPregunta"
-                    src="./../__COMUN/media/UNA_DE_CUATRO/PASTILLA_AZUL.png"
-                />
+                <img id="imgPastillaPregunta" />
+                <!-- src="./../__COMUN/media/UNA_DE_CUATRO/PASTILLA_AZUL.png" -->
                 <img
                     id="imgExtremoIzdaPregunta"
                     class="imgExtremoPregunta"
@@ -87,14 +85,14 @@
                     id="divTextoPreguntaA"
                     class="divTexto divTextoPregunta"
                 >
-                    ES EL ÚLTIMO LARGOMETRAJE ESPAÑOL EN GANAR EL ÓSCAR A LA MEJOR PELÍCULA DE HABLA NO INGLESA
+                    <!-- ES EL ÚLTIMO LARGOMETRAJE ESPAÑOL EN GANAR EL ÓSCAR A LA MEJOR PELÍCULA DE HABLA NO INGLESA -->
                 </div>
 
                 <div
                     id="divTextoPreguntaB"
                     class="divTexto divTextoPregunta"
                 >
-                    FUE LA PRIMERA PELÍCULA EN OBTENER MÁS DE 2.000 MILLONES DE DÓLARES DE RECAUDACIÓN
+                    <!-- FUE LA PRIMERA PELÍCULA EN OBTENER MÁS DE 2.000 MILLONES DE DÓLARES DE RECAUDACIÓN -->
                 </div>
             </div>
 
@@ -104,68 +102,68 @@
                     id="divOpcion1"
                     class="divOpcion"
                 >
-                    <img
-                        id="imgPastillaOpcion1"
-                        src="./../__COMUN/media/UNA_DE_CUATRO/PASTI_OPCION_AZUL.png"
-                    />
+                    <img id="imgPastillaOpcion1" />
+                    <!-- src="./../__COMUN/media/UNA_DE_CUATRO/PASTI_OPCION_AZUL.png" -->
+
                     <img
                         id="imgExtremoIzdaOpcion1"
                         class="imgExtremoOpcion extremoIzda"
-                        src="./../__COMUN/media/UNA_DE_CUATRO/PASTILLA_OPC_EXTREMO_IZDA.png"
                     />
+                    <!-- src="./../__COMUN/media/UNA_DE_CUATRO/PASTILLA_OPC_EXTREMO_IZDA.png" -->
+
                     <img
                         id="imgExtremoDchaOpcion1"
                         class="imgExtremoOpcion extremoDcha"
-                        src="./../__COMUN/media/UNA_DE_CUATRO/PASTILLA_OPC_EXTREMO_DCHA.png"
                     />
+                    <!-- src="./../__COMUN/media/UNA_DE_CUATRO/PASTILLA_OPC_EXTREMO_DCHA.png" -->
+
                     <div
                         id="divTextoOpcion1"
                         class="divTexto divTextoOpcion"
                     >
-                        JUNGLA DE CRISTAL
+                        <!-- JUNGLA DE CRISTAL -->
                     </div>
 
                     <div
                         id="divSolucionOpcion1"
                         class="divSolucionOpcion"
                     >
-                        <img
-                            id="imgSolucionAciertoOpcion1"
-                            src="./../__COMUN/media/UNA_DE_CUATRO/PASTI_ACIERTO.png"
-                        />
-                        <img
-                            id="imgSolucionFalloOpcion1"
-                            src="./../__COMUN/media/UNA_DE_CUATRO/PASTI_FALLO.png"
-                        />
+                        <img id="imgSolucionAciertoOpcion1" />
+                        <!-- src="./../__COMUN/media/UNA_DE_CUATRO/PASTI_ACIERTO.png" -->
+
+                        <img id="imgSolucionFalloOpcion1" />
+                        <!-- src="./../__COMUN/media/UNA_DE_CUATRO/PASTI_FALLO.png" -->
+
                         <div
                             id="divTextoSolucionOpcion1"
                             class="divTexto divTextoOpcion textoSolucion"
                         >
-                            JUNGLA DE CRISTAL
+                            <!-- JUNGLA DE CRISTAL -->
                         </div>
                     </div>
 
                     <img
                         id="imgSolucionContornoOpcion1"
                         class="imgSolucionContornoOpcion"
-                        src="./../__COMUN/media/UNA_DE_CUATRO/PASTI_SOLUCION_CONTORNO.png"
                     />
+                    <!-- src="./../__COMUN/media/UNA_DE_CUATRO/PASTI_SOLUCION_CONTORNO.png" -->
                 </div>
             </div>
 
             <div id="adornoLetras">
-                <video
-                    id="videoAdorno"
-                    src="./../__COMUN/media/LETRAS_NARANJA.webm"
-                    autoplay
-                ></video>
+                <video id="videoAdornoLetras"></video>
+                <!-- src="./../__COMUN/media/LETRAS_NARANJA.webm"
+                    autoplay -->
             </div>
         </div>
 
         <div class="titulo">UNA DE CUATRO</div>
         <div id="botonera">
-            <button onClick="plantilla_ver()">VER</button>
             <button onClick="plantilla_reload()">RELOAD</button>
+            <button onClick="plantilla_ver()">VER</button>
+            <button onClick="plantilla_reset('AZUL')">RESET AZUL</button>
+            <button onClick="respuestas_in('MAR ADENTRO#DIRTY DANCING#JUNGLA DE CRISTAL#AVATAR')">RESPUESTAS IN</button>
+            <button onClick="pregunta_in('ES EL ÚLTIMO LARGOMETRAJE ESPAÑOL EN GANAR EL ÓSCAR A LA MEJOR PELÍCULA DE HABLA NO INGLESA')">PREGUNTA IN</button>
         </div>
     </body>
 

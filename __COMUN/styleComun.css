@@ -77,11 +77,12 @@ img {
 .titulo {
     background-color: #1a833d;
     font-size: 40px;
-    left: -323px;
+    left: -335px;
     transform: rotate(270deg);
-    top: 322px;
+    top: 533px;
     text-align: center;
     width: 710px;
+    padding: 5px;
 }
 
 #botonera {
@@ -92,7 +93,9 @@ img {
     /* background-color: rgb(255, 0, 212); */
     height: 50px;
     display: flex;
+    flex-direction: row-reverse;
     flex-wrap: wrap;
+    gap: 3px;
 
     button {
         background-color: yellow;
@@ -127,7 +130,7 @@ img {
 
 #container {
     background-color: #282828;
-    opacity: 1;
+    /* opacity: 0; */
 }
 .titulo {
     opacity: 1;
