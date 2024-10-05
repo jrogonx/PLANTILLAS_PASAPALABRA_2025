@@ -49,6 +49,10 @@ div {
     background-position: center;
 }
 
+img {
+    position: absolute;
+}
+
 /* CONTENEDOR HD */
 #container {
     top: 0;
@@ -59,16 +63,13 @@ div {
     scale: 1;
 }
 
-.divTextoPregunta {
+.divTexto {
     display: flex;
     overflow: hidden;
     justify-content: center;
     align-items: center;
     text-align: center;
-}
-
-.textoSombra {
-    text-shadow: 4px 4px 3px var(--sombra);
+    text-shadow: 3px 3px 2px var(--sombra);
 }
 
 /* ----------------------- PROVISIONALES ----------------------- */

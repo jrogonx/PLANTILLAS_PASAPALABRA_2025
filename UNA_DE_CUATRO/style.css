@@ -8,21 +8,17 @@
     /* clip-path: url(#clipDivPregunta); */
 }
 
-#preguntaImgPastilla {
+#imgPastillaPregunta {
     position: relative;
     opacity: 1;
     left: 00px;
 }
 
-.preguntaImgExtremo {
-    /* background-color: rgba(255, 255, 0, 0.459); */
-    position: absolute;
-}
-#preguntaImgExtremoIZDA {
+#imgExtremoIzdaPregunta {
     opacity: 1;
     left: 0px;
 }
-#preguntaImgExtremoDCHA {
+#imgExtremoDchaPregunta {
     opacity: 0;
     right: 0px;
 }
@@ -41,6 +37,79 @@
 #divTextoPreguntaB {
     opacity: 0;
 }
+
+/* -------------------- OPCIONES ---------------------- */
+
+#divOpciones {
+    /* background-color: rgba(255, 255, 0, 0.527); */
+    width: 780px;
+    height: 230px;
+    top: 310px;
+
+    /* equipo naranja */
+    left: 172px;
+
+    /* equipo azul */
+    /* left: 983px; */
+
+    font-size: 33px;
+}
+
+.divOpcion {
+    clip-path: url(#clipDivOpcion);
+}
+
+.imgExtremoOpcion {
+    /* background-color: rgba(255, 255, 0, 0.527); */
+    height: 95px;
+}
+.extremoIzda {
+    left: 0px;
+}
+.extremoDcha {
+    left: 331px;
+}
+
+#divOpcion1 {
+    left: 0px;
+}
+#divOpcion2 {
+    left: 390px;
+}
+#divOpcion3 {
+    top: 125px;
+}
+#divOpcion4 {
+    left: 390px;
+    top: 125px;
+}
+
+.divTextoOpcion {
+    /* background-color: rgba(255, 255, 0, 0.527); */
+    height: 78px;
+    width: 348px;
+    top: 9px;
+    left: 15px;
+}
+
+.divSolucionOpcion {
+    background-color: rgba(255, 255, 0, 0.499);
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    left: -390px;
+}
+
+.textoSolucion {
+    /* color: black; */
+    text-shadow: none;
+}
+
+.imgSolucionContornoOpcion {
+    opacity: 0;
+}
+
+/* ----------- ADORNOS -------------- */
 
 #adornoLetras {
     /* background-color: rgba(0, 0, 255, 0.535); */

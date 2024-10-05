@@ -7,11 +7,32 @@
 gsap.ticker.fps(50)
 // gsap.registerPlugin(CustomEase)
 
-// OBJETOS DOM
+// -------------- OBJETOS DOM ---------------------------
 const container = document.getElementById("container")
 // container.style.opacity = 0
 
-const imgPastilla = document.getElementById("imgPastilla")
+const imgPastillaPregunta = document.getElementById("imgPastillaPregunta")
+const imgExtremoIzdaPregunta = document.getElementById("imgExtremoIzdaPregunta")
+const imgExtremoDchaPregunta = document.getElementById("imgExtremoDchaPregunta")
+
+const divTextoPreguntaA = document.getElementById("divTextoPreguntaA")
+const divTextoPreguntaB = document.getElementById("divTextoPreguntaB")
+
+const divOpciones = document.getElementById("divOpciones")
+
+const imgPastillaOpciones = [null, null, null, null]
+const imgExtremoIzdaOpciones = [null, null, null, null]
+const imgExtremoDchaOpciones = [null, null, null, null]
+const divTextoOpciones = [null, null, null, null]
+
+const divSolucionOpciones = [null, null, null, null]
+const imgSolucionAciertoOpciones = [null, null, null, null]
+const imgSolucionFalloOpciones = [null, null, null, null]
+const divTextoSolucionOpciones = [null, null, null, null]
+
+const imgSolucionContornoOpciones = [null, null, null, null]
+
+const videoAdornoLetras = document.getElementById("videoAdornoLetras")
 
 // CONSTANTES
 const xxxxxxxx = "xxxxxxx"
@@ -43,7 +64,7 @@ const plantilla_ocultar = () => {
     container.style.opacity = 0
 }
 
-const plantilla_reset = (delay = 0) => {
+const plantilla_reset = (equipo = "NARANJA", delay = 0) => {
     // reseteo a estado inicial listo para lanzar
     setTimeout(() => {
         // gsap.set(preguntaImgPastilla, {
@@ -57,6 +78,8 @@ const plantilla_reset = (delay = 0) => {
 
 const plantilla_auto_inicializar = () => {
     // INCIALIZA OBJETOS CUANDO SE CARGA LA PLANTILLA
+
+    crearOpciones()
 
     // RESETEAMOS VALORES
     plantilla_reset()
@@ -113,3 +136,32 @@ const plantilla_out = (delay = 0) => {
 // -------------------------------------------------------------------------
 // ------------- FUNCIONES INTERNAS ----------------------------------------
 // -------------------------------------------------------------------------
+
+const crearOpciones = async () => {
+    while (divOpciones.hasChildNodes()) {
+        divOpciones.removeChild(divOpciones.firstChild)
+    }
+
+    for (let ix = 0; ix < 4; ix++) {
+        const num = ix + 1
+
+        const divOpcion = document.createElement("div")
+        divOpcion.id = "divOpcion" + num
+        divOpcion.className = "divOpcion"
+        // divOpcion.style.opacity = 0
+
+        const imgPastillaOpcion = document.createElement("img")
+        imgPastillaOpcion.id = "imgPastillaOpcion" + num
+        imgPastillaOpcion.src = "./../__COMUN/media/UNA_DE_CUATRO/PASTI_OPCION_NARANJA.png"
+        divOpcion.appendChild(imgPastillaOpcion)
+        imgPastillaOpciones[ix] = imgPastillaOpcion
+
+        // const nombreJugador = document.createElement("div")
+        // nombreJugador.id = "nombreJugador" + num
+        // nombreJugador.className = "nombreJugador"
+        // nombreJugador.innerHTML = datos[1].trim()
+        // divOpcion.appendChild(nombreJugador)
+
+        divOpciones.appendChild(divOpcion)
+    }
+}

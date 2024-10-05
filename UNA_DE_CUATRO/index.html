@@ -39,69 +39,117 @@
                     r="64"
                 />
             </clipPath>
+
+            <clipPath id="clipDivOpcion">
+                <circle
+                    cx="47"
+                    cy="47"
+                    r="48"
+                />
+                <rect
+                    x="47"
+                    y="0"
+                    width="280"
+                    height="95"
+                />
+                <circle
+                    cx="330"
+                    cy="47"
+                    r="48"
+                />
+            </clipPath>
             />
         </svg>
 
         <div id="container">
-            <img
+            <!-- <img
                 class="ref"
                 src="./../__COMUN/media/UNA_DE_CUATRO/UD4_REF_1.png"
-            />
+            /> -->
 
             <div id="divPregunta">
                 <img
-                    id="preguntaImgPastilla"
+                    id="imgPastillaPregunta"
                     src="./../__COMUN/media/UNA_DE_CUATRO/PASTILLA_AZUL.png"
                 />
                 <img
-                    id="preguntaImgExtremoIZDA"
-                    class="preguntaImgExtremo"
+                    id="imgExtremoIzdaPregunta"
+                    class="imgExtremoPregunta"
                     src="./../__COMUN/media/UNA_DE_CUATRO/PASTILLA_EXTREMO_IZDA.png"
                 />
                 <img
-                    id="preguntaImgExtremoDCHA"
-                    class="preguntaImgExtremo"
+                    id="imgExtremoDchaPregunta"
+                    class="imgExtremoPregunta"
                     src="./../__COMUN/media/UNA_DE_CUATRO/PASTILLA_EXTREMO_DCHA.png"
                 />
 
                 <div
                     id="divTextoPreguntaA"
-                    class="divTextoPregunta textoSombra"
+                    class="divTexto divTextoPregunta"
                 >
                     ES EL ÚLTIMO LARGOMETRAJE ESPAÑOL EN GANAR EL ÓSCAR A LA MEJOR PELÍCULA DE HABLA NO INGLESA
                 </div>
 
                 <div
                     id="divTextoPreguntaB"
-                    class="divTextoPregunta textoSombra"
+                    class="divTexto divTextoPregunta"
                 >
                     FUE LA PRIMERA PELÍCULA EN OBTENER MÁS DE 2.000 MILLONES DE DÓLARES DE RECAUDACIÓN
                 </div>
             </div>
-            <div id="divOpciones">
-                <div
-                    id="opcion1"
-                    class="opcion"
-                >
-                    <!-- <img
-                        id="opcion1_imgPastilla"
-                        class="opcionImgPastilla"
-                        src="./../__COMUN/media/UNA_DE_CUATRO/PASTILLA_AZUL.png"
-                    /> -->
-                    <!-- <img
-                        id="opcion1_ImgExtremoIZDA"
-                        class="opcionImgExtremo"
-                        src="./../__COMUN/media/UNA_DE_CUATRO/PASTILLA_EXTREMO_IZDA.png"
-                    /> -->
-                    <!-- <img
-                        id="opcion1_ImgExtremoDCHA"
-                        class="opcionImgExtremo"
-                        src="./../__COMUN/media/UNA_DE_CUATRO/PASTILLA_EXTREMO_DCHA.png"
-                    /> -->
 
-                    <!-- <div id="divTextoOpcion1" class="divTextoOpcion">
-                        XXXXXXXX
-                    </div> -->
+            <div id="divOpciones">
+                <!-- OPCION MODELO. LAS 4 SE CREAN EN SCRIPT -->
+                <div
+                    id="divOpcion1"
+                    class="divOpcion"
+                >
+                    <img
+                        id="imgPastillaOpcion1"
+                        src="./../__COMUN/media/UNA_DE_CUATRO/PASTI_OPCION_AZUL.png"
+                    />
+                    <img
+                        id="imgExtremoIzdaOpcion1"
+                        class="imgExtremoOpcion extremoIzda"
+                        src="./../__COMUN/media/UNA_DE_CUATRO/PASTILLA_OPC_EXTREMO_IZDA.png"
+                    />
+                    <img
+                        id="imgExtremoDchaOpcion1"
+                        class="imgExtremoOpcion extremoDcha"
+                        src="./../__COMUN/media/UNA_DE_CUATRO/PASTILLA_OPC_EXTREMO_DCHA.png"
+                    />
+                    <div
+                        id="divTextoOpcion1"
+                        class="divTexto divTextoOpcion"
+                    >
+                        JUNGLA DE CRISTAL
+                    </div>
+
+                    <div
+                        id="divSolucionOpcion1"
+                        class="divSolucionOpcion"
+                    >
+                        <img
+                            id="imgSolucionAciertoOpcion1"
+                            src="./../__COMUN/media/UNA_DE_CUATRO/PASTI_ACIERTO.png"
+                        />
+                        <img
+                            id="imgSolucionFalloOpcion1"
+                            src="./../__COMUN/media/UNA_DE_CUATRO/PASTI_FALLO.png"
+                        />
+                        <div
+                            id="divTextoSolucionOpcion1"
+                            class="divTexto divTextoOpcion textoSolucion"
+                        >
+                            JUNGLA DE CRISTAL
+                        </div>
+                    </div>
+
+                    <img
+                        id="imgSolucionContornoOpcion1"
+                        class="imgSolucionContornoOpcion"
+                        src="./../__COMUN/media/UNA_DE_CUATRO/PASTI_SOLUCION_CONTORNO.png"
+                    />
                 </div>
             </div>
 
