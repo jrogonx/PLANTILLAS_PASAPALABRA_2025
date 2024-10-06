@@ -143,6 +143,9 @@ const respuestas_IN = (_respuestas, delay = 0) => {
         for (let ix = 0; ix < 4; ix++) {
             divTextoOpciones[ix].innerHTML = divTextoSolucionOpciones[ix].innerHTML = respuestas[ix]
 
+            // const tamanoFuente = calcularTamanoFuente_segunAltura(respuestas[ix], 348, 78, 33, "montseBold")
+            // console.log("fontSize [" + respuestas[ix] + "]", tamanoFuente)
+
             const retraso = ix * 0.15
 
             gsap.to(imgExtremoIzdaOpciones[ix], {
@@ -314,7 +317,9 @@ const resuelveRespuesta = (nRespuesta, aciertoFallo, nuevaPregunta, nuevaRespues
                 if (esUltima == "N") {
                     divTextoOpciones[ix].innerHTML = nuevaRespuesta
 
-                    console.log("nuevo", nuevaRespuesta, divTextoOpciones[ix].clientHeight)
+                    const tamanoFuente = calcularTamanoFuente_segunAltura(divTextoOpciones[ix], 78)
+                    console.log("fontSize [" + nuevaRespuesta + "]", tamanoFuente)
+                    // divTextoOpciones[ix].style.fontSize = tamanoFuente
 
                     gsap.to(divSolucionOpciones[ix], {
                         duration: 0.4,

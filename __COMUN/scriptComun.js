@@ -1,4 +1,30 @@
-function resize_tipografia(elemento, tamano_fuente_inicial, anchoMaximo) {
+// -----------------------------------------------------------------------------
+// ------------- FUNCIONES EJECUTABLES DESDE CIENTE ----------------------------
+// -----------------------------------------------------------------------------
+
+//
+
+// -------------------------------------------------------------------------
+// ------------- FUNCIONES INTERNAS ----------------------------------------
+// -------------------------------------------------------------------------
+function calcularTamanoFuente_segunAltura(elementoDom, alturaMaximo) {
+    let tamano_fuente_final = window.getComputedStyle(elementoDom).fontSize
+    const alto = window.getComputedStyle(elementoDom).height
+    const altoscroll = elementoDom.scrollHeight
+
+    console.log("tamano_fuente_final", tamano_fuente_final)
+    console.log("alto", alto)
+    console.log("altoscroll", altoscroll)
+
+    while (elementoDom.scrollHeight > alto) {
+        tamano_fuente_final -= 1
+        elementoDom.style.fontSize = tamano_fuente_final + "px"
+    }
+
+    return tamano_fuente_final + "px"
+}
+
+function calcularTamanoFuente(elemento, tamano_fuente_inicial, anchoMaximo) {
     let tamano_fuente_final = tamano_fuente_inicial
 
     elemento.style.fontSize = tamano_fuente_final + "px"
@@ -10,16 +36,6 @@ function resize_tipografia(elemento, tamano_fuente_inicial, anchoMaximo) {
 
     return tamano_fuente_final
 }
-
-// -----------------------------------------------------------------------------
-// ------------- FUNCIONES EJECUTABLES DESDE CIENTE ----------------------------
-// -----------------------------------------------------------------------------
-
-//
-
-// -------------------------------------------------------------------------
-// ------------- FUNCIONES INTERNAS ----------------------------------------
-// -------------------------------------------------------------------------
 
 const procesarTexto = (texto) => {
     let nuevoTexto = texto.replace(/(\r\n|\n|\r)/gm, " ")
