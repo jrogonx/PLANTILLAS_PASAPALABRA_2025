@@ -95,12 +95,18 @@ const plantilla_reset = (_equipo = "NARANJA", delay = 0) => {
             })
 
             divTextoSolucionOpciones[ix].innerHTML = ""
-            gsap.set([divSolucionOpciones[ix], divTextoSolucionOpciones[ix]], {
+            gsap.set(divSolucionOpciones[ix], {
                 left: -390,
+                opacity: 1,
             })
 
             gsap.set([imgSolucionAciertoOpciones[ix], imgSolucionFalloOpciones[ix]], {
                 opacity: 0,
+            })
+
+            gsap.set(imgSolucionContornoOpciones[ix], {
+                opacity: 0,
+                left: 0,
             })
         }
 
@@ -128,7 +134,7 @@ setTimeout(() => {
 // -------------- FUNCIONES ACCESIBLES DESDE CONTROLLER --------------------
 // -------------------------------------------------------------------------
 
-const respuestas_in = (_respuestas, delay = 0) => {
+const respuestas_IN = (_respuestas, delay = 0) => {
     setTimeout(() => {
         const respuestas = _respuestas.split("#")
 
@@ -143,19 +149,19 @@ const respuestas_in = (_respuestas, delay = 0) => {
                 opacity: 1,
             })
             gsap.to(imgPastillaOpciones[ix], {
-                duration: 0.5,
+                duration: 0.4,
                 delay: retraso,
                 left: 0,
                 ease: "power.out",
             })
             gsap.to(imgExtremoIzdaOpciones[ix], {
                 duration: 0.2,
-                delay: retraso + 0.55,
+                delay: retraso + 0.45,
                 opacity: 0,
             })
 
             gsap.to(divTextoOpciones[ix], {
-                duration: 0.5,
+                duration: 0.4,
                 delay: retraso + 0.1,
                 left: 15,
                 ease: "power.out",
@@ -163,23 +169,55 @@ const respuestas_in = (_respuestas, delay = 0) => {
         }
     }, delay)
 }
-// const respuestas_out = (delay = 0) => {
-//     setTimeout(() => {
-//         plantilla_reset()
-//     }, delay)
-// }
+const respuestas_OUT = (delay = 0) => {
+    setTimeout(() => {
+        for (let ix = 0; ix < 4; ix++) {
+            const retraso = ix * 0.05
 
-const pregunta_in = (pregunta, delay = 0) => {
+            gsap.to([imgSolucionContornoOpciones[ix], divSolucionOpciones[ix]], {
+                duration: 0.2,
+                opacity: 0,
+            })
+
+            gsap.to(imgExtremoDchaOpciones[ix], {
+                duration: 0.2,
+                delay: retraso,
+                opacity: 1,
+            })
+            gsap.to([divTextoOpciones[ix], imgPastillaOpciones[ix]], {
+                duration: 0.4,
+                delay: retraso + 0.02,
+                left: 390,
+                ease: "power.in",
+            })
+            gsap.to(imgExtremoDchaOpciones[ix], {
+                duration: 0.15,
+                delay: retraso + 0.15,
+                opacity: 0,
+            })
+        }
+
+        setTimeout(() => {
+            plantilla_reset()
+        }, delay + 1000)
+    }, delay)
+}
+
+const pregunta_IN = (pregunta, delay = 0) => {
     setTimeout(() => {
         divTextoPreguntaA.innerHTML = pregunta
         divTextoPreguntaB.innerHTML = ""
 
+        videoAdornoLetras.play()
+
         gsap.to(imgExtremoIzdaPregunta, {
             duration: 0.2,
+            delay: 0.5,
             opacity: 1,
         })
         gsap.to(imgPastillaPregunta, {
             duration: 0.5,
+            delay: 0.5,
             left: 0,
             ease: "power.out",
             onComplete: () => {
@@ -191,10 +229,93 @@ const pregunta_in = (pregunta, delay = 0) => {
         })
         gsap.to(divTextoPreguntaA, {
             duration: 0.5,
-            delay: 0.2,
+            delay: 0.7,
             left: 40,
             opacity: 1,
             ease: "power.out",
+        })
+    }, delay)
+}
+const pregunta_OUT = (delay = 0) => {
+    setTimeout(() => {
+        gsap.to(imgExtremoDchaPregunta, {
+            duration: 0.1,
+            opacity: 1,
+        })
+
+        gsap.to(imgPastillaPregunta, {
+            duration: 0.4,
+            left: 1190,
+            ease: "power.in",
+        })
+
+        gsap.to([divTextoPreguntaA, divTextoPreguntaB], {
+            duration: 0.4,
+            left: 1190,
+            opacity: 0,
+            ease: "power.out",
+        })
+
+        gsap.to(imgExtremoDchaPregunta, {
+            duration: 0.15,
+            delay: 0.22,
+            opacity: 0,
+        })
+    }, delay)
+}
+
+const preguntaRespuestas_OUT = (delay = 0) => {
+    setTimeout(() => {
+        pregunta_OUT()
+        setTimeout(() => {
+            respuestas_OUT()
+        }, 100)
+    }, delay)
+}
+
+// aciertoFallo = "A" / "F"      esUltima = "S" o "N"
+const resuelveRespuesta = (nRespuesta, aciertoFallo, nuevaRespuesta, esUltima = "N", delay = 0) => {
+    setTimeout(() => {
+        const ix = parseInt(nRespuesta) - 1
+
+        divSolucionOpciones[ix].style.left = "-390px"
+        if (aciertoFallo == "A") {
+            imgSolucionAciertoOpciones[ix].style.opacity = 1
+        } else {
+            imgSolucionFalloOpciones[ix].style.opacity = 1
+        }
+
+        gsap.to(imgSolucionContornoOpciones[ix], {
+            duration: 0.2,
+            opacity: 1,
+        })
+
+        gsap.to(divSolucionOpciones[ix], {
+            duration: 0.4,
+            left: 0,
+            ease: "power.out",
+            onComplete: () => {
+                if (esUltima == "N") {
+                    divTextoOpciones[ix].innerHTML = nuevaRespuesta
+
+                    gsap.to(divSolucionOpciones[ix], {
+                        duration: 0.4,
+                        delay: 0.2,
+                        left: 390,
+                        ease: "power.in",
+                        onComplete: () => {
+                            gsap.to(imgSolucionContornoOpciones[ix], {
+                                duration: 0.2,
+                                opacity: 0,
+                            })
+
+                            divTextoSolucionOpciones[ix].innerHTML = nuevaRespuesta
+                            imgSolucionAciertoOpciones[ix].style.opacity = 0
+                            imgSolucionFalloOpciones[ix].style.opacity = 0
+                        },
+                    })
+                }
+            },
         })
     }, delay)
 }
@@ -243,6 +364,7 @@ const crearOpciones = async () => {
         divOpcion.appendChild(divTextoOpcion)
         divTextoOpciones[ix] = divTextoOpcion
 
+        // ---- solucion -----
         const divSolucionOpcion = document.createElement("div")
         divSolucionOpcion.id = "divSolucionOpcion" + num
         divSolucionOpcion.className = "divSolucionOpcion"
@@ -260,11 +382,11 @@ const crearOpciones = async () => {
         imgSolucionFalloOpciones[ix] = imgSolucionFalloOpcion
 
         const divTextoSolucionOpcion = document.createElement("div")
-        divTextoSolucionOpcion.id = "divTextoOpcion" + num
+        divTextoSolucionOpcion.id = "divTextoSolucionOpcion" + num
         divTextoSolucionOpcion.className = "divTexto divTextoOpcion textoSolucion"
         divTextoSolucionOpcion.innerHTML = "JUNGLA DE CRISTAL 2"
         divSolucionOpcion.appendChild(divTextoSolucionOpcion)
-        divTextoSolucionOpciones[ix] = divSolucionOpcion
+        divTextoSolucionOpciones[ix] = divTextoSolucionOpcion
 
         divOpcion.appendChild(divSolucionOpcion)
         divSolucionOpciones[ix] = divSolucionOpcion
