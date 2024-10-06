@@ -39,6 +39,7 @@ const xxxxxxxx = "xxxxxxx"
 
 // VARIABLES GLOBALES
 let equipoActual = "NARANJA"
+let preguntaActual = "A"
 
 // ----------------------------- funciones caspar ----------------
 function update() {}
@@ -78,6 +79,7 @@ const plantilla_reset = (_equipo = "NARANJA", delay = 0) => {
             left: -200,
             opacity: 0,
         })
+        preguntaActual = "A"
 
         divOpciones.style.left = equipoActual == "NARANJA" ? "172px" : "983px"
 
@@ -274,7 +276,7 @@ const preguntaRespuestas_OUT = (delay = 0) => {
 }
 
 // aciertoFallo = "A" / "F"      esUltima = "S" o "N"
-const resuelveRespuesta = (nRespuesta, aciertoFallo, nuevaRespuesta, esUltima = "N", delay = 0) => {
+const resuelveRespuesta = (nRespuesta, aciertoFallo, nuevaPregunta, nuevaRespuesta, esUltima = "N", delay = 0) => {
     setTimeout(() => {
         const ix = parseInt(nRespuesta) - 1
 
@@ -284,6 +286,20 @@ const resuelveRespuesta = (nRespuesta, aciertoFallo, nuevaRespuesta, esUltima = 
         } else {
             imgSolucionFalloOpciones[ix].style.opacity = 1
         }
+
+        let preguntaAntigua
+        let preguntaNueva
+
+        if (preguntaActual == "A") {
+            preguntaAntigua = divTextoPreguntaA
+            preguntaNueva = divTextoPreguntaB
+            preguntaActual = "B"
+        } else {
+            preguntaAntigua = divTextoPreguntaB
+            preguntaNueva = divTextoPreguntaA
+            preguntaActual = "A"
+        }
+        preguntaNueva.innerHTML = nuevaPregunta
 
         gsap.to(imgSolucionContornoOpciones[ix], {
             duration: 0.2,
@@ -297,6 +313,8 @@ const resuelveRespuesta = (nRespuesta, aciertoFallo, nuevaRespuesta, esUltima = 
             onComplete: () => {
                 if (esUltima == "N") {
                     divTextoOpciones[ix].innerHTML = nuevaRespuesta
+
+                    console.log("nuevo", nuevaRespuesta, divTextoOpciones[ix].clientHeight)
 
                     gsap.to(divSolucionOpciones[ix], {
                         duration: 0.4,
@@ -317,6 +335,26 @@ const resuelveRespuesta = (nRespuesta, aciertoFallo, nuevaRespuesta, esUltima = 
                 }
             },
         })
+
+        if (esUltima == "N") {
+            gsap.to(preguntaAntigua, {
+                duration: 0.5,
+                left: 200,
+                opacity: 0,
+                ease: "power.out",
+                onComplete: () => {
+                    gsap.set(preguntaAntigua, {
+                        left: -200,
+                    })
+                },
+            })
+            gsap.to(preguntaNueva, {
+                duration: 0.5,
+                left: 0,
+                opacity: 1,
+                ease: "power.out",
+            })
+        }
     }, delay)
 }
 
