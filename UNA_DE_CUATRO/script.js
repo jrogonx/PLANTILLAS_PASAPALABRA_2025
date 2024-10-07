@@ -8,7 +8,7 @@ gsap.ticker.fps(50)
 
 // -------------- OBJETOS DOM ---------------------------
 const container = document.getElementById("container")
-// container.style.opacity = 0
+container.style.opacity = 0
 
 const imgPastillaPregunta = document.getElementById("imgPastillaPregunta")
 const imgExtremoIzdaPregunta = document.getElementById("imgExtremoIzdaPregunta")
@@ -135,6 +135,7 @@ setTimeout(() => {
 // -------------- FUNCIONES ACCESIBLES DESDE CONTROLLER --------------------
 // -------------------------------------------------------------------------
 
+// _respuestas => "111111 # 222222 # .....
 const respuestas_IN = (_respuestas, delay = 0) => {
     setTimeout(() => {
         const respuestas = _respuestas.split("#")
@@ -144,8 +145,6 @@ const respuestas_IN = (_respuestas, delay = 0) => {
 
             ajustarEspacioLetras(divTextoOpciones[ix])
             ajustarEspacioLetras(divTextoSolucionOpciones[ix])
-            // ajustarTamanoFuente_segunAltura(divTextoOpciones[ix], TAMANO_FUENTE_OPCIONES)
-            // ajustarTamanoFuente_segunAltura(divTextoSolucionOpciones[ix], TAMANO_FUENTE_OPCIONES)
 
             const retraso = ix * 0.15
 
@@ -169,7 +168,7 @@ const respuestas_IN = (_respuestas, delay = 0) => {
             gsap.to(divTextoOpciones[ix], {
                 duration: 0.4,
                 delay: retraso + 0.1,
-                left: 9,
+                left: 8,
                 ease: "power.out",
             })
         }
@@ -210,7 +209,6 @@ const pregunta_IN = (pregunta, delay = 0) => {
         divTextoPreguntaA.innerHTML = pregunta
         divTextoPreguntaB.innerHTML = ""
 
-        // ajustarTamanoFuente_segunAltura(divTextoPreguntaA, TAMANO_FUENTE_PREGUNTA)
         ajustarEspacioLetras(divTextoPreguntaA)
 
         videoAdornoLetras.play()
@@ -235,7 +233,7 @@ const pregunta_IN = (pregunta, delay = 0) => {
         gsap.to(divTextoPreguntaA, {
             duration: 0.5,
             delay: 0.7,
-            left: 40,
+            left: 20,
             opacity: 1,
             ease: "power.out",
         })
@@ -308,6 +306,7 @@ const resuelveRespuesta = (_nRespuesta, aciertoFallo, delay = 0) => {
     }, delay)
 }
 
+// _nuevasRespuestas => "111111 # 222222 # .....
 const reemplazaPreguntaRespuestas = (_nuevaPregunta, _nuevasRespuestas, delay = 0) => {
     setTimeout(() => {
         if (nRespuesta < 1) return
@@ -327,16 +326,16 @@ const reemplazaPreguntaRespuestas = (_nuevaPregunta, _nuevasRespuestas, delay = 
             preguntaActual = "A"
         }
         preguntaNueva.innerHTML = _nuevaPregunta
-        // ajustarTamanoFuente_segunAltura(preguntaNueva, TAMANO_FUENTE_PREGUNTA)
+        ajustarEspacioLetras(preguntaNueva)
 
         const nuevasRespuestas = _nuevasRespuestas.split("#")
         for (let ix2 = 0; ix2 < 4; ix2++) {
             divTextoOpciones[ix2].innerHTML = nuevasRespuestas[ix2]
-            // ajustarTamanoFuente_segunAltura(divTextoOpciones[ix2], TAMANO_FUENTE_OPCIONES)
+            ajustarEspacioLetras(divTextoOpciones[ix2])
         }
 
         gsap.to(divSolucionOpciones[ix], {
-            duration: 0.4,
+            duration: 0.5,
             delay: 0.2,
             left: 390,
             ease: "power.in",
@@ -347,7 +346,7 @@ const reemplazaPreguntaRespuestas = (_nuevaPregunta, _nuevasRespuestas, delay = 
                 })
 
                 divTextoSolucionOpciones[ix].innerHTML = nuevasRespuestas[ix]
-                // ajustarTamanoFuente_segunAltura(divTextoSolucionOpciones[ix], TAMANO_FUENTE_OPCIONES)
+                ajustarEspacioLetras(divTextoSolucionOpciones[ix])
 
                 imgSolucionAciertoOpciones[ix].style.opacity = 0
                 imgSolucionFalloOpciones[ix].style.opacity = 0
@@ -368,11 +367,11 @@ const reemplazaPreguntaRespuestas = (_nuevaPregunta, _nuevasRespuestas, delay = 
             })
             gsap.to(preguntaNueva, {
                 duration: 0.5,
-                left: 40,
+                left: 20,
                 opacity: 1,
                 ease: "power.out",
             })
-        }, 550)
+        }, 400)
     }, delay)
 }
 

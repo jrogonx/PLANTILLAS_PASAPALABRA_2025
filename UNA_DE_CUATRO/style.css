@@ -25,14 +25,14 @@
 }
 
 .divTextoPregunta {
-    background-color: #00ff805d;
+    /* background-color: #00ff805d; */
     font-size: 40px;
     line-height: 42px;
     letter-spacing: 0px;
-    height: 91px;
-    width: 1100px;
-    top: 18px;
-    left: 40px;
+    height: 98px;
+    width: 1140px;
+    top: 15px;
+    left: 20px;
 }
 
 #divTextoPreguntaA {
@@ -98,7 +98,7 @@
     height: 45px;
     width: 360px;
     top: 27px;
-    left: 9px;
+    left: 8px;
     padding: 0;
 }
 

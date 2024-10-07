@@ -43,19 +43,6 @@ function ajustarEspacioLetras(elementoDom) {
     }
 }
 
-function calcularTamanoFuente(elemento, tamano_fuente_inicial, anchoMaximo) {
-    let tamano_fuente_final = tamano_fuente_inicial
-
-    elemento.style.fontSize = tamano_fuente_final + "px"
-
-    while (elemento.clientWidth > anchoMaximo) {
-        tamano_fuente_final -= 1
-        elemento.style.fontSize = tamano_fuente_final + "px"
-    }
-
-    return tamano_fuente_final
-}
-
 const procesarTexto = (texto) => {
     let nuevoTexto = texto.replace(/(\r\n|\n|\r)/gm, " ")
 
