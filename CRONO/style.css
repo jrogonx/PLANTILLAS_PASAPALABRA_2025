@@ -1,0 +1,24 @@
+#divCrono {
+    background-color: rgba(89, 255, 0, 0.476);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 224px;
+    height: 224px;
+    left: 166px;
+    top: 796px;
+}
+
+#videoAnilloCrono {
+    width: 100%;
+    height: 100%;
+}
+
+circle {
+    stroke-dasharray: none;
+    fill: none;
+}
+
+#circle1 {
+    stroke: rebeccapurple;
+}

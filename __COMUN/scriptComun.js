@@ -7,18 +7,39 @@
 // -------------------------------------------------------------------------
 // ------------- FUNCIONES INTERNAS ----------------------------------------
 // -------------------------------------------------------------------------
-function ajustarTamanoFuente_segunAltura(elementoDom, tamanoFuenteInicial) {
-    // let tamanoFuenteInicial = parseInt(window.getComputedStyle(elementoDom).fontSize)
+// function ajustarTamanoFuente_segunAltura(elementoDom, tamanoFuenteInicial) {
+//     elementoDom.style.fontSize = tamanoFuenteInicial + "px"
+//     elementoDom.innerHTML = elementoDom.innerHTML.replaceAll("|", "<br/>")
 
-    elementoDom.style.fontSize = tamanoFuenteInicial + "px"
+//     const alto = parseInt(window.getComputedStyle(elementoDom).height)
+//     console.log("alto -->", alto)
+
+//     while (elementoDom.scrollHeight > alto) {
+//         console.log("elementoDom.scrollHeight -->", elementoDom.scrollHeight)
+
+//         tamanoFuenteInicial -= 1
+//         elementoDom.style.fontSize = tamanoFuenteInicial + "px"
+//         elementoDom.style.lineHeight = tamanoFuenteInicial + 2 + "px"
+//     }
+// }
+
+function ajustarEspacioLetras(elementoDom) {
+    elementoDom.style.letterSpacing = "0px"
     elementoDom.innerHTML = elementoDom.innerHTML.replaceAll("|", "<br/>")
 
     const alto = parseInt(window.getComputedStyle(elementoDom).height)
+    console.log("alto -->", alto)
 
+    let espaciadoLetras = 0
     while (elementoDom.scrollHeight > alto) {
-        tamanoFuenteInicial -= 1
-        elementoDom.style.fontSize = tamanoFuenteInicial + "px"
-        elementoDom.style.lineHeight = tamanoFuenteInicial + 2 + "px"
+        console.log("elementoDom.scrollHeight -->", elementoDom.scrollHeight)
+
+        if (espaciadoLetras >= -5) {
+            espaciadoLetras -= 0.1
+            elementoDom.style.letterSpacing = espaciadoLetras + "px"
+        } else {
+            break
+        }
     }
 }
 

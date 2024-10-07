@@ -8,7 +8,7 @@ gsap.ticker.fps(50)
 
 // -------------- OBJETOS DOM ---------------------------
 const container = document.getElementById("container")
-container.style.opacity = 0
+// container.style.opacity = 0
 
 const imgPastillaPregunta = document.getElementById("imgPastillaPregunta")
 const imgExtremoIzdaPregunta = document.getElementById("imgExtremoIzdaPregunta")
@@ -38,9 +38,10 @@ const TAMANO_FUENTE_PREGUNTA = 40
 const TAMANO_FUENTE_OPCIONES = 33
 
 // VARIABLES GLOBALES
-let variacionActual = "DIARIO"
+let varianteActual = "DIARIO"
 let equipoActual = "NARANJA"
 let preguntaActual = "A"
+let nRespuesta = 0
 
 // ----------------------------- funciones caspar ----------------
 function update() {}
@@ -64,10 +65,10 @@ const plantilla_ocultar = () => {
     container.style.opacity = 0
 }
 
-const plantilla_reset = (_equipo = "NARANJA", _variacion = "DIARIO", delay = 0) => {
+const plantilla_reset = (_equipo, _variante = "DIARIO", delay = 0) => {
     // reseteo a estado inicial listo para lanzar
     setTimeout(() => {
-        variacionActual = _variacion.toUpperCase()
+        varianteActual = _variante.toUpperCase()
         equipoActual = _equipo.toUpperCase()
 
         imgPastillaPregunta.src = "./../__COMUN/media/UNA_DE_CUATRO/PASTILLA_" + equipoActual + ".png"
@@ -88,7 +89,6 @@ const plantilla_reset = (_equipo = "NARANJA", _variacion = "DIARIO", delay = 0) 
         for (let ix = 0; ix < 4; ix++) {
             gsap.set([imgPastillaOpciones[ix], divTextoOpciones[ix]], {
                 left: -390,
-                // opacity: 0,
             })
 
             imgPastillaOpciones[ix].src = "./../__COMUN/media/UNA_DE_CUATRO/PASTI_OPCION_" + equipoActual + ".png"
@@ -125,9 +125,6 @@ const plantilla_reset = (_equipo = "NARANJA", _variacion = "DIARIO", delay = 0) 
 const plantilla_auto_inicializar = () => {
     // CREA OBJETOS DOM Y VARIABLES DE ACCESSO DOM CUANDO SE CARGA LA PLANTILLA
     crearOpciones()
-
-    // RESETEAMOS VALORES
-    plantilla_reset()
 }
 
 setTimeout(() => {
@@ -145,8 +142,10 @@ const respuestas_IN = (_respuestas, delay = 0) => {
         for (let ix = 0; ix < 4; ix++) {
             divTextoOpciones[ix].innerHTML = divTextoSolucionOpciones[ix].innerHTML = respuestas[ix]
 
-            ajustarTamanoFuente_segunAltura(divTextoOpciones[ix], TAMANO_FUENTE_OPCIONES)
-            ajustarTamanoFuente_segunAltura(divTextoSolucionOpciones[ix], TAMANO_FUENTE_OPCIONES)
+            ajustarEspacioLetras(divTextoOpciones[ix])
+            ajustarEspacioLetras(divTextoSolucionOpciones[ix])
+            // ajustarTamanoFuente_segunAltura(divTextoOpciones[ix], TAMANO_FUENTE_OPCIONES)
+            // ajustarTamanoFuente_segunAltura(divTextoSolucionOpciones[ix], TAMANO_FUENTE_OPCIONES)
 
             const retraso = ix * 0.15
 
@@ -170,7 +169,7 @@ const respuestas_IN = (_respuestas, delay = 0) => {
             gsap.to(divTextoOpciones[ix], {
                 duration: 0.4,
                 delay: retraso + 0.1,
-                left: 15,
+                left: 9,
                 ease: "power.out",
             })
         }
@@ -203,10 +202,6 @@ const respuestas_OUT = (delay = 0) => {
                 opacity: 0,
             })
         }
-
-        setTimeout(() => {
-            plantilla_reset()
-        }, delay + 1000)
     }, delay)
 }
 
@@ -215,7 +210,8 @@ const pregunta_IN = (pregunta, delay = 0) => {
         divTextoPreguntaA.innerHTML = pregunta
         divTextoPreguntaB.innerHTML = ""
 
-        ajustarTamanoFuente_segunAltura(divTextoPreguntaA, TAMANO_FUENTE_PREGUNTA)
+        // ajustarTamanoFuente_segunAltura(divTextoPreguntaA, TAMANO_FUENTE_PREGUNTA)
+        ajustarEspacioLetras(divTextoPreguntaA)
 
         videoAdornoLetras.play()
 
@@ -279,13 +275,18 @@ const preguntaRespuestas_OUT = (delay = 0) => {
         setTimeout(() => {
             respuestas_OUT()
         }, 100)
+
+        setTimeout(() => {
+            plantilla_reset(equipoActual, varianteActual)
+        }, delay + 1000)
     }, delay)
 }
 
-// aciertoFallo = "A" / "F"      esUltima = "S" o "N"
-const resuelveRespuesta = (nRespuesta, aciertoFallo, nuevaPregunta, nuevaRespuesta, esUltima = "N", delay = 0) => {
+// aciertoFallo = "A" / "F"
+const resuelveRespuesta = (_nRespuesta, aciertoFallo, delay = 0) => {
     setTimeout(() => {
-        const ix = parseInt(nRespuesta) - 1
+        nRespuesta = parseInt(_nRespuesta)
+        const ix = nRespuesta - 1
 
         divSolucionOpciones[ix].style.left = "-390px"
         if (aciertoFallo == "A") {
@@ -293,6 +294,25 @@ const resuelveRespuesta = (nRespuesta, aciertoFallo, nuevaPregunta, nuevaRespues
         } else {
             imgSolucionFalloOpciones[ix].style.opacity = 1
         }
+
+        gsap.to(imgSolucionContornoOpciones[ix], {
+            duration: 0.2,
+            opacity: 1,
+        })
+
+        gsap.to(divSolucionOpciones[ix], {
+            duration: 0.4,
+            left: 0,
+            ease: "power.out",
+        })
+    }, delay)
+}
+
+const reemplazaPreguntaRespuestas = (_nuevaPregunta, _nuevasRespuestas, delay = 0) => {
+    setTimeout(() => {
+        if (nRespuesta < 1) return
+
+        const ix = nRespuesta - 1
 
         let preguntaAntigua
         let preguntaNueva
@@ -306,68 +326,53 @@ const resuelveRespuesta = (nRespuesta, aciertoFallo, nuevaPregunta, nuevaRespues
             preguntaNueva = divTextoPreguntaA
             preguntaActual = "A"
         }
-        preguntaNueva.innerHTML = nuevaPregunta
+        preguntaNueva.innerHTML = _nuevaPregunta
+        // ajustarTamanoFuente_segunAltura(preguntaNueva, TAMANO_FUENTE_PREGUNTA)
 
-        gsap.to(imgSolucionContornoOpciones[ix], {
-            duration: 0.2,
-            opacity: 1,
-        })
+        const nuevasRespuestas = _nuevasRespuestas.split("#")
+        for (let ix2 = 0; ix2 < 4; ix2++) {
+            divTextoOpciones[ix2].innerHTML = nuevasRespuestas[ix2]
+            // ajustarTamanoFuente_segunAltura(divTextoOpciones[ix2], TAMANO_FUENTE_OPCIONES)
+        }
 
         gsap.to(divSolucionOpciones[ix], {
             duration: 0.4,
-            left: 0,
-            ease: "power.out",
+            delay: 0.2,
+            left: 390,
+            ease: "power.in",
             onComplete: () => {
-                if (esUltima == "N") {
-                    divTextoOpciones[ix].innerHTML = nuevaRespuesta
+                gsap.to(imgSolucionContornoOpciones[ix], {
+                    duration: 0.2,
+                    opacity: 0,
+                })
 
-                    ajustarTamanoFuente_segunAltura(divTextoOpciones[ix], TAMANO_FUENTE_OPCIONES)
+                divTextoSolucionOpciones[ix].innerHTML = nuevasRespuestas[ix]
+                // ajustarTamanoFuente_segunAltura(divTextoSolucionOpciones[ix], TAMANO_FUENTE_OPCIONES)
 
-                    gsap.to(divSolucionOpciones[ix], {
-                        duration: 0.4,
-                        delay: 0.2,
-                        left: 390,
-                        ease: "power.in",
-                        onComplete: () => {
-                            gsap.to(imgSolucionContornoOpciones[ix], {
-                                duration: 0.2,
-                                opacity: 0,
-                            })
-
-                            divTextoSolucionOpciones[ix].innerHTML = nuevaRespuesta
-                            ajustarTamanoFuente_segunAltura(divTextoSolucionOpciones[ix], TAMANO_FUENTE_OPCIONES)
-
-                            imgSolucionAciertoOpciones[ix].style.opacity = 0
-                            imgSolucionFalloOpciones[ix].style.opacity = 0
-                        },
-                    })
-                }
+                imgSolucionAciertoOpciones[ix].style.opacity = 0
+                imgSolucionFalloOpciones[ix].style.opacity = 0
             },
         })
 
-        if (esUltima == "N") {
-            ajustarTamanoFuente_segunAltura(preguntaNueva, TAMANO_FUENTE_PREGUNTA)
-
-            setTimeout(() => {
-                gsap.to(preguntaAntigua, {
-                    duration: 0.5,
-                    left: 200,
-                    opacity: 0,
-                    ease: "power.out",
-                    onComplete: () => {
-                        gsap.set(preguntaAntigua, {
-                            left: -200,
-                        })
-                    },
-                })
-                gsap.to(preguntaNueva, {
-                    duration: 0.5,
-                    left: 40,
-                    opacity: 1,
-                    ease: "power.out",
-                })
-            }, 550)
-        }
+        setTimeout(() => {
+            gsap.to(preguntaAntigua, {
+                duration: 0.5,
+                left: 200,
+                opacity: 0,
+                ease: "power.out",
+                onComplete: () => {
+                    gsap.set(preguntaAntigua, {
+                        left: -200,
+                    })
+                },
+            })
+            gsap.to(preguntaNueva, {
+                duration: 0.5,
+                left: 40,
+                opacity: 1,
+                ease: "power.out",
+            })
+        }, 550)
     }, delay)
 }
 
@@ -411,7 +416,7 @@ const crearOpciones = async () => {
         const divTextoOpcion = document.createElement("div")
         divTextoOpcion.id = "divTextoOpcion" + num
         divTextoOpcion.className = "divTexto divTextoOpcion"
-        divTextoOpcion.innerHTML = "JUNGLA DE CRISTAL"
+        // divTextoOpcion.innerHTML = "JUNGLA DE CRISTAL"
         divOpcion.appendChild(divTextoOpcion)
         divTextoOpciones[ix] = divTextoOpcion
 

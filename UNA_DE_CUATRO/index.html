@@ -64,12 +64,11 @@
         <div id="container">
             <!-- <img
                 class="ref"
-                src="./../__COMUN/media/UNA_DE_CUATRO/UD4_REF_1.png"
+                src="./../__COMUN/media/UNA_DE_CUATRO/UDC_REF_1.png"
             /> -->
 
             <div id="divPregunta">
                 <img id="imgPastillaPregunta" />
-                <!-- src="./../__COMUN/media/UNA_DE_CUATRO/PASTILLA_AZUL.png" -->
                 <img
                     id="imgExtremoIzdaPregunta"
                     class="imgExtremoPregunta"
@@ -84,16 +83,12 @@
                 <div
                     id="divTextoPreguntaA"
                     class="divTexto divTextoPregunta"
-                >
-                    <!-- ES EL ÚLTIMO LARGOMETRAJE ESPAÑOL EN GANAR EL ÓSCAR A LA MEJOR PELÍCULA DE HABLA NO INGLESA -->
-                </div>
+                ></div>
 
                 <div
                     id="divTextoPreguntaB"
                     class="divTexto divTextoPregunta"
-                >
-                    <!-- FUE LA PRIMERA PELÍCULA EN OBTENER MÁS DE 2.000 MILLONES DE DÓLARES DE RECAUDACIÓN -->
-                </div>
+                ></div>
             </div>
 
             <div id="divOpciones">
@@ -103,50 +98,40 @@
                     class="divOpcion"
                 >
                     <img id="imgPastillaOpcion1" />
-                    <!-- src="./../__COMUN/media/UNA_DE_CUATRO/PASTI_OPCION_AZUL.png" -->
 
                     <img
                         id="imgExtremoIzdaOpcion1"
                         class="imgExtremoOpcion extremoIzda"
                     />
-                    <!-- src="./../__COMUN/media/UNA_DE_CUATRO/PASTILLA_OPC_EXTREMO_IZDA.png" -->
 
                     <img
                         id="imgExtremoDchaOpcion1"
                         class="imgExtremoOpcion extremoDcha"
                     />
-                    <!-- src="./../__COMUN/media/UNA_DE_CUATRO/PASTILLA_OPC_EXTREMO_DCHA.png" -->
 
                     <div
                         id="divTextoOpcion1"
                         class="divTexto divTextoOpcion"
-                    >
-                        <!-- JUNGLA DE CRISTAL -->
-                    </div>
+                    ></div>
 
                     <div
                         id="divSolucionOpcion1"
                         class="divSolucionOpcion"
                     >
                         <img id="imgSolucionAciertoOpcion1" />
-                        <!-- src="./../__COMUN/media/UNA_DE_CUATRO/PASTI_ACIERTO.png" -->
 
                         <img id="imgSolucionFalloOpcion1" />
-                        <!-- src="./../__COMUN/media/UNA_DE_CUATRO/PASTI_FALLO.png" -->
 
                         <div
                             id="divTextoSolucionOpcion1"
                             class="divTexto divTextoOpcion textoSolucion"
-                        >
-                            <!-- JUNGLA DE CRISTAL -->
-                        </div>
+                        ></div>
                     </div>
 
                     <img
                         id="imgSolucionContornoOpcion1"
                         class="imgSolucionContornoOpcion"
                     />
-                    <!-- src="./../__COMUN/media/UNA_DE_CUATRO/PASTI_SOLUCION_CONTORNO.png" -->
                 </div>
             </div>
 
@@ -161,23 +146,26 @@
         <div id="botonera">
             <button onClick="plantilla_reload()">RELOAD</button>
             <button onClick="plantilla_ver()">VER</button>
-            <button onClick="plantilla_reset('AZUL')">RESET AZUL</button>
-            <button onClick="respuestas_IN('MAR ADENTRO#DIRTY|DANCING#JUNGLA|DE CRISTAL#AVATAR')">RESPUESTAS IN</button>
+            <button onClick="plantilla_reset('NARANJA','DIARIO')">RESET NARANJA</button>
+            <button onClick="plantilla_reset('AZUL','DIARIO')">RESET AZUL</button>
+            <button onClick="respuestas_IN('MAR ADENTRO#DIRTY DANCING#JUNGLA DE CRISTAL OPACO#AVATAR')">RESPUESTAS IN</button>
             <button onClick="respuestas_OUT()">RESPUESTAS OUT</button>
-            <button onClick="pregunta_IN('ES EL ÚLTIMO LARGOMETRAJE|ESPAÑOL EN GANAR EL|ÓSCAR A LA MEJOR PELÍCULA DE HABLA NO INGLESA')">PREGUNTA IN</button>
+            <button onClick="pregunta_IN('ES EL ÚLTIMO LARGOMETRAJE ESPAÑOL EN GANAR EL ÓSCAR A LA MEJOR PELÍCULA DE HABLA NO INGLESA')">PREGUNTA IN</button>
             <button onClick="pregunta_OUT()">PREGUNTA OUT</button>
             <button onClick="preguntaRespuestas_OUT()">PREG / RESPS OUT</button>
-            <button onClick="resuelveRespuesta(1,'F','NUEVA PREGUNTA 1','NUEVO TEXTO 1 OPCION','N')">RESUELVE 1 F</button>
-            <button onClick="resuelveRespuesta(1,'A','NUEVA PREGUNTA 1111','NUEVO TEXTO 111','N')">RESUELVE 1 A</button>
-            <button onClick="resuelveRespuesta(2,'A','NUEVA PREGUNTA 2','NUEVO TEXTO 22 OPCION','N')">RESUELVE 2 A</button>
-            <button onClick="resuelveRespuesta(2,'F','NUEVA PREGUNTA 22222', 'NUEVO TEXTO 22222','S')">RESUELVE 2 F ult</button>
-            <button onClick="resuelveRespuesta(3,'A','NUEVA PREGUTNA 33','NUEVO TEXTO 3 MAS LARGO QUE TRES LINEAS','N')">RESUELVE 3 A</button>
-            <button onClick="resuelveRespuesta(3,'F','NUEVA PREGUTNA 33333','NUEVO TEXTO 33 CORTO','N')">RESUELVE 3 F</button>
-            <button onClick="resuelveRespuesta(4,'F','NUEVA PREGUTNA 44444444','NUEVO TEXTO 4','N')">RESUELVE 4 A</button>
-            <button
-                onClick="resuelveRespuesta(4,'F','NUEVA PREGUTNA 444 CON EL TEXTO EXTREMADAMENTE|LARGO PARA VER COMO HACE LA CONVERSIÓN DE TAMAÑO DE FUENTE','NUEVO TEXTO 444','N')"
-            >
-                RESUELVE 4 F
+
+            <button onClick="resuelveRespuesta(2,'F')">RESUELVE 2 F</button>
+            <button onClick="reemplazaPreguntaRespuestas('NUEVA PREGUNTA 22222222','MAR ADENTRO#PAKITO FERNANDEZ#JUNGLA DE CRISTAL#AVATAR')">REEMPLAZA 2</button>
+
+            <button onClick="resuelveRespuesta(3,'A')">RESUELVE 3 A</button>
+            <button onClick="reemplazaPreguntaRespuestas('NUEVA PREGUNTA 333 333 3333','MAR ADENTRO#PAKITO FERNANDEZ#ANATOLI DE FRANCIA#AVATAR')">REEMPLAZA 3</button>
+
+            <button onClick="resuelveRespuesta(1,'A')">RESUELVE 1 A</button>
+            <button onClick="reemplazaPreguntaRespuestas('NUEVA PREGUNTA 11111111111','LOS PÁJAROS#PAKITO FERNANDEZ#ANATOLI DE FRANCIA#AVATAR')">REEMPLAZA 1</button>
+
+            <button onClick="resuelveRespuesta(4,'F')">RESUELVE 4 F</button>
+            <button onClick="reemplazaPreguntaRespuestas('NUEVA PREGUNTA 11111111111','LOS PÁJAROS#PAKITO FERNANDEZ#ANATOLI DE FRANCIA#DESAYUNO CON DIAMANTES')">
+                REEMPLAZA 4
             </button>
         </div>
     </body>

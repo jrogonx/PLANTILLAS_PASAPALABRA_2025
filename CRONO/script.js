@@ -5,7 +5,7 @@
 // --------------------------------------------------------
 
 gsap.ticker.fps(50)
-// gsap.registerPlugin(CustomEase)
+gsap.registerPlugin(DrawSVGPlugin)
 
 // -------------- OBJETOS DOM ---------------------------
 const container = document.getElementById("container")
@@ -100,6 +100,38 @@ const crono_STOP = (delay = 0) => {
     //
 }
 
+const animacionAnilloInicial = (delay = 0) => {
+    MorphSVGPlugin.convertToPath("#test")
+
+    TweenMax.set("#test", { rotation: -90, transformOrigin: "center center" })
+
+    var tl = new TimelineMax({ repeat: -1, yoyo: true, repeatDelay: 0.1 })
+    tl.to("#test", 1.5, { drawSVG: "0%" })
+}
+
 // -------------------------------------------------------------------------
 // ------------- FUNCIONES INTERNAS ----------------------------------------
 // -------------------------------------------------------------------------
+
+const prueba = (delay = 0) => {
+    var circle1 = document.querySelector("#circle1")
+
+    var cx1 = 145
+    var cx2 = 450
+    var cy = cx1
+
+    var radius = 60
+    var length = Math.PI * 2 * radius
+
+    gsap.set(circle1, {
+        strokeWidth: radius * 2,
+        drawSVG: 0,
+        attr: { cx: cx1, cy: cy, r: radius },
+    })
+
+    gsap.to(circle1, {
+        duration: 4,
+        drawSVG: true,
+        ease: Linear.easeNone,
+    })
+}

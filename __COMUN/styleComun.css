@@ -63,7 +63,7 @@ img {
 
 .divTexto {
     display: flex;
-    overflow: hidden;
+    overflow: auto;
     justify-content: center;
     align-items: center;
     text-align: center;

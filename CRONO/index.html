@@ -16,60 +16,52 @@
     </head>
 
     <body>
-        <svg
-            viewBox="0 0 1610 165"
-            version="1.1"
+        <!-- <svg
+            id="demo"
             xmlns="http://www.w3.org/2000/svg"
+            width="300"
+            height="300"
+            viewBox="0 0 100 100"
         >
-            <clipPath id="clipDivPregunta">
-                <circle
-                    cx="62"
-                    cy="63"
-                    r="62"
-                />
-                <rect
-                    x="63"
-                    y="0"
-                    width="1050"
-                    height="125"
-                />
-                <circle
-                    cx="1118"
-                    cy="63"
-                    r="62"
-                />
-            </clipPath>
+            <circle
+                id="test"
+                stroke="green"
+                stroke-width="10"
+                fill="none"
+                cx="50"
+                cy="50"
+                r="40"
+            />
+        </svg> -->
 
-            <clipPath id="clipDivOpcion">
-                <circle
-                    cx="47"
-                    cy="47"
-                    r="47"
-                />
-                <rect
-                    x="52"
-                    y="0"
-                    width="275"
-                    height="95"
-                />
-                <circle
-                    cx="331"
-                    cy="47"
-                    r="47"
-                />
-            </clipPath>
+        <svg id="svg">
+            <circle
+                id="circle1"
+                r="0"
+                cx="0"
+                cy="0"
             />
         </svg>
 
         <div id="container">
-            <!-- <img
+            <img
                 class="ref"
-                src="./../__COMUN/media/UNA_DE_CUATRO/UD4_REF_1.png"
-            /> -->
+                src="./../__COMUN/media/CRONO/UDC_CRONO_REF.png"
+            />
+
+            <div id="divCrono">
+                <video
+                    id="videoAnilloCrono"
+                    src="./../__COMUN/media/CRONO/ANILLO_CRONO_IN_OUT.webm"
+                    autoplay
+                    loop
+                ></video>
+            </div>
         </div>
 
         <div class="titulo">CRONO</div>
         <div id="botonera">
+            <button onClick="prueba()">PRUEBA</button>
             <button onClick="plantilla_reload()">RELOAD</button>
             <button onClick="plantilla_ver()">VER</button>
             <button onClick="plantilla_reset('AZUL')">RESET AZUL</button>
@@ -77,6 +69,7 @@
     </body>
 
     <script src="../__COMUN/librerias/gsap/3.12.5/gsap.min.js"></script>
+    <script src="../__COMUN/librerias/gsap/3.2.6/DrawSVGPlugin.min.js"></script>
 
     <script src="../__COMUN/scriptComun.js"></script>
     <script src="script.js"></script>
