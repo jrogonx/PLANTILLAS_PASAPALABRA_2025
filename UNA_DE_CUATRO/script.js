@@ -35,7 +35,8 @@ const imgSolucionContornoOpciones = [null, null, null, null]
 const videoAdornoLetras = document.getElementById("videoAdornoLetras")
 
 // CONSTANTES
-const xxxxxxxx = "xxxxxxx"
+const TAMANO_FUENTE_PREGUNTA = 40
+const TAMANO_FUENTE_OPCIONES = 33
 
 // VARIABLES GLOBALES
 let equipoActual = "NARANJA"
@@ -63,7 +64,7 @@ const plantilla_ocultar = () => {
     container.style.opacity = 0
 }
 
-const plantilla_reset = (_equipo = "NARANJA", delay = 0) => {
+const plantilla_reset = (_equipo = "NARANJA", variacion = "DIARIO", delay = 0) => {
     // reseteo a estado inicial listo para lanzar
     setTimeout(() => {
         equipoActual = _equipo.toUpperCase()
@@ -143,8 +144,8 @@ const respuestas_IN = (_respuestas, delay = 0) => {
         for (let ix = 0; ix < 4; ix++) {
             divTextoOpciones[ix].innerHTML = divTextoSolucionOpciones[ix].innerHTML = respuestas[ix]
 
-            // const tamanoFuente = calcularTamanoFuente_segunAltura(respuestas[ix], 348, 78, 33, "montseBold")
-            // console.log("fontSize [" + respuestas[ix] + "]", tamanoFuente)
+            ajustarTamanoFuente_segunAltura(divTextoOpciones[ix], TAMANO_FUENTE_OPCIONES)
+            ajustarTamanoFuente_segunAltura(divTextoSolucionOpciones[ix], TAMANO_FUENTE_OPCIONES)
 
             const retraso = ix * 0.15
 
@@ -212,6 +213,8 @@ const pregunta_IN = (pregunta, delay = 0) => {
     setTimeout(() => {
         divTextoPreguntaA.innerHTML = pregunta
         divTextoPreguntaB.innerHTML = ""
+
+        ajustarTamanoFuente_segunAltura(divTextoPreguntaA, TAMANO_FUENTE_PREGUNTA)
 
         videoAdornoLetras.play()
 
@@ -317,9 +320,7 @@ const resuelveRespuesta = (nRespuesta, aciertoFallo, nuevaPregunta, nuevaRespues
                 if (esUltima == "N") {
                     divTextoOpciones[ix].innerHTML = nuevaRespuesta
 
-                    const tamanoFuente = calcularTamanoFuente_segunAltura(divTextoOpciones[ix], 78)
-                    console.log("fontSize [" + nuevaRespuesta + "]", tamanoFuente)
-                    // divTextoOpciones[ix].style.fontSize = tamanoFuente
+                    ajustarTamanoFuente_segunAltura(divTextoOpciones[ix], TAMANO_FUENTE_OPCIONES)
 
                     gsap.to(divSolucionOpciones[ix], {
                         duration: 0.4,
@@ -333,6 +334,8 @@ const resuelveRespuesta = (nRespuesta, aciertoFallo, nuevaPregunta, nuevaRespues
                             })
 
                             divTextoSolucionOpciones[ix].innerHTML = nuevaRespuesta
+                            ajustarTamanoFuente_segunAltura(divTextoSolucionOpciones[ix], TAMANO_FUENTE_OPCIONES)
+
                             imgSolucionAciertoOpciones[ix].style.opacity = 0
                             imgSolucionFalloOpciones[ix].style.opacity = 0
                         },
@@ -342,23 +345,27 @@ const resuelveRespuesta = (nRespuesta, aciertoFallo, nuevaPregunta, nuevaRespues
         })
 
         if (esUltima == "N") {
-            gsap.to(preguntaAntigua, {
-                duration: 0.5,
-                left: 200,
-                opacity: 0,
-                ease: "power.out",
-                onComplete: () => {
-                    gsap.set(preguntaAntigua, {
-                        left: -200,
-                    })
-                },
-            })
-            gsap.to(preguntaNueva, {
-                duration: 0.5,
-                left: 0,
-                opacity: 1,
-                ease: "power.out",
-            })
+            ajustarTamanoFuente_segunAltura(preguntaNueva, TAMANO_FUENTE_PREGUNTA)
+
+            setTimeout(() => {
+                gsap.to(preguntaAntigua, {
+                    duration: 0.5,
+                    left: 200,
+                    opacity: 0,
+                    ease: "power.out",
+                    onComplete: () => {
+                        gsap.set(preguntaAntigua, {
+                            left: -200,
+                        })
+                    },
+                })
+                gsap.to(preguntaNueva, {
+                    duration: 0.5,
+                    left: 40,
+                    opacity: 1,
+                    ease: "power.out",
+                })
+            }, 550)
         }
     }, delay)
 }

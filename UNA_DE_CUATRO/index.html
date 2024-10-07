@@ -162,16 +162,23 @@
             <button onClick="plantilla_reload()">RELOAD</button>
             <button onClick="plantilla_ver()">VER</button>
             <button onClick="plantilla_reset('AZUL')">RESET AZUL</button>
-            <button onClick="respuestas_IN('MAR ADENTRO#DIRTY DANCING#JUNGLA DE CRISTAL#AVATAR')">RESPUESTAS IN</button>
+            <button onClick="respuestas_IN('MAR ADENTRO#DIRTY|DANCING#JUNGLA|DE CRISTAL#AVATAR')">RESPUESTAS IN</button>
             <button onClick="respuestas_OUT()">RESPUESTAS OUT</button>
-            <button onClick="pregunta_IN('ES EL ÚLTIMO LARGOMETRAJE ESPAÑOL EN GANAR EL ÓSCAR A LA MEJOR PELÍCULA DE HABLA NO INGLESA')">PREGUNTA IN</button>
+            <button onClick="pregunta_IN('ES EL ÚLTIMO LARGOMETRAJE|ESPAÑOL EN GANAR EL|ÓSCAR A LA MEJOR PELÍCULA DE HABLA NO INGLESA')">PREGUNTA IN</button>
             <button onClick="pregunta_OUT()">PREGUNTA OUT</button>
             <button onClick="preguntaRespuestas_OUT()">PREG / RESPS OUT</button>
             <button onClick="resuelveRespuesta(1,'F','NUEVA PREGUNTA 1','NUEVO TEXTO 1 OPCION','N')">RESUELVE 1 F</button>
-            <button onClick="resuelveRespuesta(2,'A','NUEVA PREGUNTA 2','NUEVO TEXTO 22 OPCION','N')">RESUELVE 2 A</button>
             <button onClick="resuelveRespuesta(1,'A','NUEVA PREGUNTA 1111','NUEVO TEXTO 111','N')">RESUELVE 1 A</button>
+            <button onClick="resuelveRespuesta(2,'A','NUEVA PREGUNTA 2','NUEVO TEXTO 22 OPCION','N')">RESUELVE 2 A</button>
             <button onClick="resuelveRespuesta(2,'F','NUEVA PREGUNTA 22222', 'NUEVO TEXTO 22222','S')">RESUELVE 2 F ult</button>
             <button onClick="resuelveRespuesta(3,'A','NUEVA PREGUTNA 33','NUEVO TEXTO 3 MAS LARGO QUE TRES LINEAS','N')">RESUELVE 3 A</button>
+            <button onClick="resuelveRespuesta(3,'F','NUEVA PREGUTNA 33333','NUEVO TEXTO 33 CORTO','N')">RESUELVE 3 F</button>
+            <button onClick="resuelveRespuesta(4,'F','NUEVA PREGUTNA 44444444','NUEVO TEXTO 4','N')">RESUELVE 4 A</button>
+            <button
+                onClick="resuelveRespuesta(4,'F','NUEVA PREGUTNA 444 CON EL TEXTO EXTREMADAMENTE|LARGO PARA VER COMO HACE LA CONVERSIÓN DE TAMAÑO DE FUENTE','NUEVO TEXTO 444','N')"
+            >
+                RESUELVE 4 F
+            </button>
         </div>
     </body>
 

@@ -1,0 +1,137 @@
+#divPregunta {
+    /* background-color: rgb(255, 0, 0); */
+    left: 450px;
+    top: 845px;
+    width: 1190px;
+    height: 130px;
+
+    clip-path: url(#clipDivPregunta);
+}
+
+#imgPastillaPregunta {
+    position: relative;
+    opacity: 1;
+    left: -1180px;
+}
+
+#imgExtremoIzdaPregunta {
+    opacity: 0;
+    left: -1px;
+    top: -2px;
+}
+#imgExtremoDchaPregunta {
+    opacity: 0;
+    right: 10px;
+}
+
+.divTextoPregunta {
+    /* background-color: rgba(0, 255, 128, 0.483); */
+
+    /* tamaño fuente realmente puesto luego en script para ajustarlo */
+    font-size: 40px;
+    line-height: 42px;
+
+    height: 115px;
+    width: 1100px;
+    top: 5px;
+    left: 40px;
+}
+
+#divTextoPreguntaA {
+    opacity: 1;
+}
+#divTextoPreguntaB {
+    opacity: 0;
+}
+
+/* -------------------- OPCIONES ---------------------- */
+
+#divOpciones {
+    /* background-color: rgba(255, 255, 0, 0.527); */
+    width: 780px;
+    height: 230px;
+    top: 310px;
+
+    /* equipo naranja */
+    left: 172px;
+
+    /* equipo azul */
+    /* left: 983px; */
+
+    /* tamaño fuente realmente puesto luego en script para ajustarlo */
+    font-size: 33px;
+    line-height: 35px;
+}
+
+.divOpcion {
+    clip-path: url(#clipDivOpcion);
+}
+
+.imgExtremoOpcion {
+    /* background-color: rgba(255, 255, 0, 0.527); */
+    opacity: 1;
+}
+.extremoIzda {
+    left: 0px;
+    top: 0px;
+    opacity: 0;
+}
+.extremoDcha {
+    left: 326px;
+    top: 0px;
+    opacity: 0;
+}
+
+#divOpcion1 {
+    left: 0px;
+}
+#divOpcion2 {
+    left: 390px;
+}
+#divOpcion3 {
+    top: 125px;
+}
+#divOpcion4 {
+    left: 390px;
+    top: 125px;
+}
+
+.divTextoOpcion {
+    /* background-color: rgba(255, 255, 0, 0.527); */
+    height: 78px;
+    width: 348px;
+    top: 9px;
+    left: 15px;
+}
+
+.divSolucionOpcion {
+    background-color: rgba(255, 255, 0, 0.499);
+    width: 100%;
+    height: 100%;
+    left: -390px;
+}
+
+.textoSolucion {
+    /* color: black; */
+    text-shadow: none;
+}
+
+.imgSolucionContornoOpcion {
+    opacity: 0;
+}
+
+/* ----------- ADORNOS -------------- */
+
+#adornoLetras {
+    /* background-color: rgba(0, 0, 255, 0.535); */
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+}
+
+#videoAdorno {
+    /* background-color: yellow; */
+    width: 100%;
+    height: 100%;
+}

@@ -7,21 +7,19 @@
 // -------------------------------------------------------------------------
 // ------------- FUNCIONES INTERNAS ----------------------------------------
 // -------------------------------------------------------------------------
-function calcularTamanoFuente_segunAltura(elementoDom, alturaMaximo) {
-    let tamano_fuente_final = window.getComputedStyle(elementoDom).fontSize
-    const alto = window.getComputedStyle(elementoDom).height
-    const altoscroll = elementoDom.scrollHeight
+function ajustarTamanoFuente_segunAltura(elementoDom, tamanoFuenteInicial) {
+    // let tamanoFuenteInicial = parseInt(window.getComputedStyle(elementoDom).fontSize)
 
-    console.log("tamano_fuente_final", tamano_fuente_final)
-    console.log("alto", alto)
-    console.log("altoscroll", altoscroll)
+    elementoDom.style.fontSize = tamanoFuenteInicial + "px"
+    elementoDom.innerHTML = elementoDom.innerHTML.replaceAll("|", "<br/>")
+
+    const alto = parseInt(window.getComputedStyle(elementoDom).height)
 
     while (elementoDom.scrollHeight > alto) {
-        tamano_fuente_final -= 1
-        elementoDom.style.fontSize = tamano_fuente_final + "px"
+        tamanoFuenteInicial -= 1
+        elementoDom.style.fontSize = tamanoFuenteInicial + "px"
+        elementoDom.style.lineHeight = tamanoFuenteInicial + 2 + "px"
     }
-
-    return tamano_fuente_final + "px"
 }
 
 function calcularTamanoFuente(elemento, tamano_fuente_inicial, anchoMaximo) {
