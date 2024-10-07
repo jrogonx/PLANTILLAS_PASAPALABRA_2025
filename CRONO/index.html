@@ -2,7 +2,7 @@
 <html lang="es-ES">
     <head>
         <meta charset="utf-8" />
-        <title>UNA DE CUATRO</title>
+        <title>CRONO</title>
         <link
             href="./../__COMUN/styleComun.css"
             rel="stylesheet"
@@ -66,124 +66,17 @@
                 class="ref"
                 src="./../__COMUN/media/UNA_DE_CUATRO/UD4_REF_1.png"
             /> -->
-
-            <div id="divPregunta">
-                <img id="imgPastillaPregunta" />
-                <!-- src="./../__COMUN/media/UNA_DE_CUATRO/PASTILLA_AZUL.png" -->
-                <img
-                    id="imgExtremoIzdaPregunta"
-                    class="imgExtremoPregunta"
-                    src="./../__COMUN/media/UNA_DE_CUATRO/PASTILLA_EXTREMO_IZDA.png"
-                />
-                <img
-                    id="imgExtremoDchaPregunta"
-                    class="imgExtremoPregunta"
-                    src="./../__COMUN/media/UNA_DE_CUATRO/PASTILLA_EXTREMO_DCHA.png"
-                />
-
-                <div
-                    id="divTextoPreguntaA"
-                    class="divTexto divTextoPregunta"
-                >
-                    <!-- ES EL ÚLTIMO LARGOMETRAJE ESPAÑOL EN GANAR EL ÓSCAR A LA MEJOR PELÍCULA DE HABLA NO INGLESA -->
-                </div>
-
-                <div
-                    id="divTextoPreguntaB"
-                    class="divTexto divTextoPregunta"
-                >
-                    <!-- FUE LA PRIMERA PELÍCULA EN OBTENER MÁS DE 2.000 MILLONES DE DÓLARES DE RECAUDACIÓN -->
-                </div>
-            </div>
-
-            <div id="divOpciones">
-                <!-- OPCION MODELO. LAS 4 SE CREAN EN SCRIPT -->
-                <div
-                    id="divOpcion1"
-                    class="divOpcion"
-                >
-                    <img id="imgPastillaOpcion1" />
-                    <!-- src="./../__COMUN/media/UNA_DE_CUATRO/PASTI_OPCION_AZUL.png" -->
-
-                    <img
-                        id="imgExtremoIzdaOpcion1"
-                        class="imgExtremoOpcion extremoIzda"
-                    />
-                    <!-- src="./../__COMUN/media/UNA_DE_CUATRO/PASTILLA_OPC_EXTREMO_IZDA.png" -->
-
-                    <img
-                        id="imgExtremoDchaOpcion1"
-                        class="imgExtremoOpcion extremoDcha"
-                    />
-                    <!-- src="./../__COMUN/media/UNA_DE_CUATRO/PASTILLA_OPC_EXTREMO_DCHA.png" -->
-
-                    <div
-                        id="divTextoOpcion1"
-                        class="divTexto divTextoOpcion"
-                    >
-                        <!-- JUNGLA DE CRISTAL -->
-                    </div>
-
-                    <div
-                        id="divSolucionOpcion1"
-                        class="divSolucionOpcion"
-                    >
-                        <img id="imgSolucionAciertoOpcion1" />
-                        <!-- src="./../__COMUN/media/UNA_DE_CUATRO/PASTI_ACIERTO.png" -->
-
-                        <img id="imgSolucionFalloOpcion1" />
-                        <!-- src="./../__COMUN/media/UNA_DE_CUATRO/PASTI_FALLO.png" -->
-
-                        <div
-                            id="divTextoSolucionOpcion1"
-                            class="divTexto divTextoOpcion textoSolucion"
-                        >
-                            <!-- JUNGLA DE CRISTAL -->
-                        </div>
-                    </div>
-
-                    <img
-                        id="imgSolucionContornoOpcion1"
-                        class="imgSolucionContornoOpcion"
-                    />
-                    <!-- src="./../__COMUN/media/UNA_DE_CUATRO/PASTI_SOLUCION_CONTORNO.png" -->
-                </div>
-            </div>
-
-            <div id="adornoLetras">
-                <video id="videoAdornoLetras"></video>
-                <!-- src="./../__COMUN/media/LETRAS_NARANJA.webm"
-                    autoplay -->
-            </div>
         </div>
 
-        <div class="titulo">UNA DE CUATRO</div>
+        <div class="titulo">CRONO</div>
         <div id="botonera">
             <button onClick="plantilla_reload()">RELOAD</button>
             <button onClick="plantilla_ver()">VER</button>
             <button onClick="plantilla_reset('AZUL')">RESET AZUL</button>
-            <button onClick="respuestas_IN('MAR ADENTRO#DIRTY|DANCING#JUNGLA|DE CRISTAL#AVATAR')">RESPUESTAS IN</button>
-            <button onClick="respuestas_OUT()">RESPUESTAS OUT</button>
-            <button onClick="pregunta_IN('ES EL ÚLTIMO LARGOMETRAJE|ESPAÑOL EN GANAR EL|ÓSCAR A LA MEJOR PELÍCULA DE HABLA NO INGLESA')">PREGUNTA IN</button>
-            <button onClick="pregunta_OUT()">PREGUNTA OUT</button>
-            <button onClick="preguntaRespuestas_OUT()">PREG / RESPS OUT</button>
-            <button onClick="resuelveRespuesta(1,'F','NUEVA PREGUNTA 1','NUEVO TEXTO 1 OPCION','N')">RESUELVE 1 F</button>
-            <button onClick="resuelveRespuesta(1,'A','NUEVA PREGUNTA 1111','NUEVO TEXTO 111','N')">RESUELVE 1 A</button>
-            <button onClick="resuelveRespuesta(2,'A','NUEVA PREGUNTA 2','NUEVO TEXTO 22 OPCION','N')">RESUELVE 2 A</button>
-            <button onClick="resuelveRespuesta(2,'F','NUEVA PREGUNTA 22222', 'NUEVO TEXTO 22222','S')">RESUELVE 2 F ult</button>
-            <button onClick="resuelveRespuesta(3,'A','NUEVA PREGUTNA 33','NUEVO TEXTO 3 MAS LARGO QUE TRES LINEAS','N')">RESUELVE 3 A</button>
-            <button onClick="resuelveRespuesta(3,'F','NUEVA PREGUTNA 33333','NUEVO TEXTO 33 CORTO','N')">RESUELVE 3 F</button>
-            <button onClick="resuelveRespuesta(4,'F','NUEVA PREGUTNA 44444444','NUEVO TEXTO 4','N')">RESUELVE 4 A</button>
-            <button
-                onClick="resuelveRespuesta(4,'F','NUEVA PREGUTNA 444 CON EL TEXTO EXTREMADAMENTE|LARGO PARA VER COMO HACE LA CONVERSIÓN DE TAMAÑO DE FUENTE','NUEVO TEXTO 444','N')"
-            >
-                RESUELVE 4 F
-            </button>
         </div>
     </body>
 
     <script src="../__COMUN/librerias/gsap/3.12.5/gsap.min.js"></script>
-    <!-- <script src="../__COMUN/librerias/gsap/3.12.5/CustomEase.min.js"></script> -->
 
     <script src="../__COMUN/scriptComun.js"></script>
     <script src="script.js"></script>

@@ -5,11 +5,10 @@
 // --------------------------------------------------------
 
 gsap.ticker.fps(50)
-// gsap.registerPlugin(CustomEase)
 
 // -------------- OBJETOS DOM ---------------------------
 const container = document.getElementById("container")
-// container.style.opacity = 0
+container.style.opacity = 0
 
 const imgPastillaPregunta = document.getElementById("imgPastillaPregunta")
 const imgExtremoIzdaPregunta = document.getElementById("imgExtremoIzdaPregunta")
@@ -39,6 +38,7 @@ const TAMANO_FUENTE_PREGUNTA = 40
 const TAMANO_FUENTE_OPCIONES = 33
 
 // VARIABLES GLOBALES
+let variacionActual = "DIARIO"
 let equipoActual = "NARANJA"
 let preguntaActual = "A"
 
@@ -64,9 +64,10 @@ const plantilla_ocultar = () => {
     container.style.opacity = 0
 }
 
-const plantilla_reset = (_equipo = "NARANJA", variacion = "DIARIO", delay = 0) => {
+const plantilla_reset = (_equipo = "NARANJA", _variacion = "DIARIO", delay = 0) => {
     // reseteo a estado inicial listo para lanzar
     setTimeout(() => {
+        variacionActual = _variacion.toUpperCase()
         equipoActual = _equipo.toUpperCase()
 
         imgPastillaPregunta.src = "./../__COMUN/media/UNA_DE_CUATRO/PASTILLA_" + equipoActual + ".png"
