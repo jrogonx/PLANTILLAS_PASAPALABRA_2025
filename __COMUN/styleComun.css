@@ -52,6 +52,9 @@ div {
 img {
     position: absolute;
 }
+video {
+    position: absolute;
+}
 
 /* CONTENEDOR HD */
 #container {

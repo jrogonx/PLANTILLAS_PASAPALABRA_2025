@@ -32,10 +32,38 @@ const divTextoSolucionOpciones = [null, null, null, null]
 const imgSolucionContornoOpciones = [null, null, null, null]
 
 const videoAdornoLetras = document.getElementById("videoAdornoLetras")
+const videoAdornoOpciones = document.getElementById("videoAdornoLetras")
 
 // CONSTANTES
 const TAMANO_FUENTE_PREGUNTA = 40
 const TAMANO_FUENTE_OPCIONES = 33
+
+let coordenadasAdornos = [
+    {
+        variante: "DIARIO",
+        videoAdornoLetras: ["./../__COMUN/media/LETRAS_", 0, 0],
+    },
+    {
+        variante: "CARNAVAL",
+        videoAdornoLetras: ["xxxxxxxxx", 0, 0],
+        videoAdornoOpciones: ["./../__COMUN/media/UNA_DE_CUATRO/CARNAVAL/MASCARA_IN.webm", 377, 108],
+    },
+    {
+        variante: "HALLOWEEN",
+        videoAdornoLetras: ["xxxxxxxxx", 0, 0],
+        videoAdornoOpciones: ["xxxxxxxxx", 377, 108],
+    },
+    {
+        variante: "NAVIDAD",
+        videoAdornoLetras: ["xxxxxxxxx", 0, 0],
+        videoAdornoOpciones: ["xxxxxxxxx", 377, 108],
+    },
+    {
+        variante: "VERANO",
+        videoAdornoLetras: ["xxxxxxxxx", 0, 0],
+        videoAdornoOpciones: ["xxxxxxxxx", 377, 108],
+    },
+]
 
 // VARIABLES GLOBALES
 let varianteActual = "DIARIO"
@@ -114,11 +142,7 @@ const plantilla_reset = (_equipo, _variante = "DIARIO", delay = 0) => {
             })
         }
 
-        videoAdornoLetras.src = "./../__COMUN/media/LETRAS_" + equipoActual + ".webm"
-        videoAdornoLetras.autoplay = false
-        videoAdornoLetras.loop = false
-        videoAdornoLetras.currentTime = 0
-        videoAdornoLetras.pause()
+        resetearAdornos()
     }, delay)
 }
 
@@ -455,4 +479,27 @@ const crearOpciones = async () => {
 
         divOpciones.appendChild(divOpcion)
     }
+}
+
+const resetearAdornos = () => {
+    const coordenadas = coordenadasAdornos.find((e) => e.variante == varianteActual)
+    if (coordenadas != null) {
+        switch (varianteActual) {
+            case "DIARIO":
+                videoAdornoLetras.src = coordenadas.videoAdornoLetras[0] + equipoActual + ".webm"
+                break
+            case "UNA_DE_CUATRO":
+                videoAdornoOpciones.src = coordenadas.videoAdornoOpciones[0]
+                videoAdornoOpciones
+                break
+
+            default:
+                break
+        }
+    }
+
+    videoAdornoLetras.autoplay = false
+    videoAdornoLetras.loop = false
+    videoAdornoLetras.currentTime = 0
+    videoAdornoLetras.pause()
 }
