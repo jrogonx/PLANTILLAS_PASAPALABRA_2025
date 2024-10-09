@@ -1,24 +1,42 @@
 #divCrono {
-    background-color: rgba(89, 255, 0, 0.476);
+    /* background-color: rgba(89, 255, 0, 0.307); */
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 224px;
-    height: 224px;
-    left: 166px;
-    top: 796px;
+    width: 230px;
+    height: 230px;
+    left: 163px;
+    top: 792px;
 }
 
-#videoAnilloCrono {
-    width: 100%;
-    height: 100%;
+svg {
+    /* background: rgba(255, 255, 0, 0.296); */
+    /* border: 1px solid #666; */
+    opacity: 0;
+    /* transform: scale(0.5); */
 }
 
-circle {
-    stroke-dasharray: none;
+#cronoAnillo {
     fill: none;
+    stroke: #fff;
+    stroke-width: 3px;
+    transform: rotate(90deg);
+    opacity: 0;
 }
 
-#circle1 {
-    stroke: rebeccapurple;
+#cronoProgresion {
+    fill: #00ff26;
+    stroke: #ff0000;
+    stroke-width: 25px;
+    /* transform-origin: 135px 0; */
+    transform: rotate(-90deg);
+    opacity: 0;
+}
+
+#cronoCentro {
+    fill: #00ff26;
+    stroke: #ffffff;
+    stroke-width: 4px;
+    transform-origin: 100px 50px;
+    opacity: 1;
 }

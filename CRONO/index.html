@@ -16,60 +16,55 @@
     </head>
 
     <body>
-        <!-- <svg
-            id="demo"
-            xmlns="http://www.w3.org/2000/svg"
-            width="300"
-            height="300"
-            viewBox="0 0 100 100"
-        >
-            <circle
-                id="test"
-                stroke="green"
-                stroke-width="10"
-                fill="none"
-                cx="50"
-                cy="50"
-                r="40"
-            />
-        </svg> -->
-
-        <svg id="svg">
-            <circle
-                id="circle1"
-                r="0"
-                cx="0"
-                cy="0"
-            />
-        </svg>
-
         <div id="container">
-            <img
+            <!-- <img
                 class="ref"
                 src="./../__COMUN/media/CRONO/UDC_CRONO_REF.png"
-            />
+            /> -->
 
             <div id="divCrono">
-                <video
-                    id="videoAnilloCrono"
-                    src="./../__COMUN/media/CRONO/ANILLO_CRONO_IN_OUT.webm"
-                    autoplay
-                    loop
-                ></video>
+                <svg
+                    id="svgCrono"
+                    viewBox="0 0 270 270"
+                    xmlns="http://www.w3.org/2000/svg"
+                >
+                    <defs></defs>
+
+                    <circle
+                        id="cronoProgresion"
+                        cx="-135"
+                        cy="135"
+                        r="116"
+                    ></circle>
+
+                    <circle
+                        id="cronoAnillo"
+                        cx="135"
+                        cy="-135"
+                        r="132"
+                    ></circle>
+                    <!-- <circle
+                        id="cronoCentro"
+                        cx="150"
+                        cy="125"
+                        r="125"
+                    ></circle> -->
+                </svg>
             </div>
         </div>
 
         <div class="titulo">CRONO</div>
         <div id="botonera">
-            <button onClick="prueba()">PRUEBA</button>
             <button onClick="plantilla_reload()">RELOAD</button>
             <button onClick="plantilla_ver()">VER</button>
-            <button onClick="plantilla_reset('AZUL')">RESET AZUL</button>
+            <button onClick="plantilla_reset('AZUL')">RESET</button>
+            <button onClick="anillo_IN()">ANILLO IN</button>
+            <button onClick="anillo_OUT()">ANILLO OUT</button>
         </div>
     </body>
 
     <script src="../__COMUN/librerias/gsap/3.12.5/gsap.min.js"></script>
-    <script src="../__COMUN/librerias/gsap/3.2.6/DrawSVGPlugin.min.js"></script>
+    <!-- <script src="../__COMUN/librerias/gsap/3.2.6/DrawSVGPlugin.min.js"></script> -->
 
     <script src="../__COMUN/scriptComun.js"></script>
     <script src="script.js"></script>

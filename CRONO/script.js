@@ -5,13 +5,18 @@
 // --------------------------------------------------------
 
 gsap.ticker.fps(50)
-gsap.registerPlugin(DrawSVGPlugin)
+// gsap.registerPlugin(DrawSVGPlugin)
 
 // -------------- OBJETOS DOM ---------------------------
 const container = document.getElementById("container")
 // container.style.opacity = 0
 
-const imgPastillaPregunta = document.getElementById("imgPastillaPregunta")
+const svgCrono = document.getElementById("svgCrono")
+const cronoAnillo = document.getElementById("cronoAnillo")
+const cronoProgresion = document.getElementById("cronoProgresion")
+const cronoCentro = document.getElementById("cronoCentro")
+
+const tlCronoProgresion = gsap.timeline()
 
 // CONSTANTES
 let coordenadasCrono = [
@@ -57,6 +62,11 @@ const plantilla_reset = (_equipo = "NARANJA", _prueba = "UNA_DE_CUATRO", delay =
         equipoActual = _equipo.toUpperCase()
         pruebaActual = _prueba.toUpperCase()
     }, delay)
+
+    gsap.set(svgCrono, {
+        opacity: 0,
+        x: -300,
+    })
 }
 
 const plantilla_auto_inicializar = () => {
@@ -100,38 +110,99 @@ const crono_STOP = (delay = 0) => {
     //
 }
 
-const animacionAnilloInicial = (delay = 0) => {
-    MorphSVGPlugin.convertToPath("#test")
-
-    TweenMax.set("#test", { rotation: -90, transformOrigin: "center center" })
-
-    var tl = new TimelineMax({ repeat: -1, yoyo: true, repeatDelay: 0.1 })
-    tl.to("#test", 1.5, { drawSVG: "0%" })
-}
-
 // -------------------------------------------------------------------------
 // ------------- FUNCIONES INTERNAS ----------------------------------------
 // -------------------------------------------------------------------------
 
-const prueba = (delay = 0) => {
-    var circle1 = document.querySelector("#circle1")
+const cronoProgresion_IN = (delay = 0) => {
+    const perimetro = cronoProgresion.getTotalLength()
+    console.log(perimetro)
 
-    var cx1 = 145
-    var cx2 = 450
-    var cy = cx1
-
-    var radius = 60
-    var length = Math.PI * 2 * radius
-
-    gsap.set(circle1, {
-        strokeWidth: radius * 2,
-        drawSVG: 0,
-        attr: { cx: cx1, cy: cy, r: radius },
+    gsap.set(cronoProgresion, {
+        strokeDasharray: perimetro + 1.2,
+        strokeDashoffset: perimetro + 1.2,
     })
 
-    gsap.to(circle1, {
-        duration: 4,
-        drawSVG: true,
-        ease: Linear.easeNone,
+    const tl = gsap
+        .timeline()
+        .to(cronoProgresion, {
+            duration: 0.3,
+            opacity: 1,
+        })
+        .to(cronoProgresion, {
+            duration: 2,
+            strokeDashoffset: 0,
+            ease: "none",
+        })
+}
+
+const anillo_IN = () => {
+    const perimetro = cronoAnillo.getTotalLength()
+    console.log(perimetro)
+
+    gsap.set(cronoAnillo, {
+        strokeDasharray: perimetro + 1.2,
+        strokeDashoffset: -perimetro + 1.2,
     })
+
+    gsap.to(svgCrono, {
+        duration: 0.7,
+        x: 0,
+        opacity: 1,
+        ease: "power2.out",
+    })
+
+    gsap.to(cronoAnillo, {
+        delay: 0.2,
+        duration: 0.3,
+        opacity: 1,
+    })
+
+    gsap.to(cronoAnillo, {
+        delay: 0.2,
+        duration: 0.9,
+        strokeDashoffset: 0,
+        ease: "power2.out",
+    })
+
+    setTimeout(() => {
+        // cronoProgresion_IN()
+    }, 500)
+}
+
+const anillo_OUT = () => {
+    gsap.to(cronoAnillo, {
+        duration: 0.9,
+        strokeDashoffset: -628,
+        ease: "power2.in",
+    })
+
+    // gsap.to(svgCrono, {
+    //     delay: 0.2,
+    //     duration: 0.4,
+    //     opacity: 0,
+    //     x: 300,
+    // })
+}
+
+const cronoCentro_IN = (delay = 0) => {
+    const perimetro = cronoProgresion.getTotalLength()
+    console.log(perimetro)
+
+    gsap.set(cronoProgresion, {
+        strokeDasharray: perimetro + 1.2,
+        strokeDashoffset: perimetro + 1.2,
+    })
+
+    const tl = gsap
+        .timeline()
+        .to(cronoProgresion, {
+            duration: 0.3,
+            opacity: 1,
+        })
+        .to(cronoProgresion, {
+            duration: 2,
+            strokeDashoffset: 0,
+            ease: "none",
+        })
 }
