@@ -25,6 +25,8 @@
     --verdeOscuro: #107136;
     --magentaClaro: #a91050;
     --magentaOscuro: #8f1a1f;
+    --peligroClaro: #cf104c;
+    --peligroOscuro: #9e0c3b;
 
     --blancoTextos: #fff;
     --sombra: #1212125c;
@@ -67,8 +69,8 @@ img {
     justify-content: center;
     align-items: center;
     text-align: center;
-    text-shadow: 3px 3px 2px var(--sombra);
     padding: 0;
+    text-shadow: 4px 4px 2px var(--sombra);
 }
 
 /* ----------------------- PROVISIONALES ----------------------- */

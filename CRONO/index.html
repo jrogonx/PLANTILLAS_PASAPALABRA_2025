@@ -28,13 +28,103 @@
                     viewBox="0 0 270 270"
                     xmlns="http://www.w3.org/2000/svg"
                 >
-                    <defs></defs>
+                    <defs>
+                        <linearGradient
+                            id="gradienteNaranja"
+                            gradientUnits="userSpaceOnUse"
+                            x1="20"
+                            y1="20"
+                            x2="250"
+                            y2="250"
+                            spreadMethod="pad"
+                            gradientTransform="matrix(0.311576, -0.884129, 0.582733, 0.467223, 65.932276, 251.698257)"
+                        >
+                            <stop
+                                offset="0"
+                                style="stop-color: var(--naranjaOscuro)"
+                            ></stop>
+                            <stop
+                                offset="1"
+                                style="stop-color: var(--naranjaClaro)"
+                            ></stop>
+                        </linearGradient>
+
+                        <linearGradient
+                            id="gradienteAzul"
+                            gradientUnits="userSpaceOnUse"
+                            x1="20"
+                            y1="20"
+                            x2="250"
+                            y2="250"
+                            spreadMethod="pad"
+                            gradientTransform="matrix(0.311576, -0.884129, 0.582733, 0.467223, 65.932276, 251.698257)"
+                        >
+                            <stop
+                                offset="0"
+                                style="stop-color: var(--azulOscuro)"
+                            ></stop>
+                            <stop
+                                offset="1"
+                                style="stop-color: var(--azulClaro)"
+                            ></stop>
+                        </linearGradient>
+
+                        <linearGradient
+                            id="gradientePeligro"
+                            gradientUnits="userSpaceOnUse"
+                            x1="20"
+                            y1="20"
+                            x2="250"
+                            y2="250"
+                            spreadMethod="pad"
+                            gradientTransform="matrix(0.311576, -0.884129, 0.582733, 0.467223, 65.932276, 251.698257)"
+                        >
+                            <stop
+                                offset="0"
+                                style="stop-color: var(--peligroOscuro)"
+                            ></stop>
+                            <stop
+                                offset="1"
+                                style="stop-color: var(--peligroClaro)"
+                            ></stop>
+                        </linearGradient>
+
+                        <clipPath id="mascaCrono">
+                            <circle
+                                cx="135"
+                                cy="135"
+                                r="110"
+                            ></circle>
+                        </clipPath>
+
+                        <clipPath id="mascaSegundos">
+                            <circle
+                                cx="115"
+                                cy="115"
+                                r="90"
+                            ></circle>
+                        </clipPath>
+                    </defs>
+
+                    <circle
+                        id="cronoCentro"
+                        cx="135"
+                        cy="135"
+                        r="107"
+                    ></circle>
+
+                    <circle
+                        id="cronoCentro5s"
+                        cx="135"
+                        cy="135"
+                        r="107"
+                    ></circle>
 
                     <circle
                         id="cronoProgresion"
                         cx="-135"
                         cy="135"
-                        r="116"
+                        r="120"
                     ></circle>
 
                     <circle
@@ -43,13 +133,10 @@
                         cy="-135"
                         r="132"
                     ></circle>
-                    <!-- <circle
-                        id="cronoCentro"
-                        cx="150"
-                        cy="125"
-                        r="125"
-                    ></circle> -->
                 </svg>
+                <div class="divTexto divSegundos">
+                    <div id="textoSegundos"></div>
+                </div>
             </div>
         </div>
 
@@ -57,9 +144,20 @@
         <div id="botonera">
             <button onClick="plantilla_reload()">RELOAD</button>
             <button onClick="plantilla_ver()">VER</button>
-            <button onClick="plantilla_reset('AZUL')">RESET</button>
-            <button onClick="anillo_IN()">ANILLO IN</button>
-            <button onClick="anillo_OUT()">ANILLO OUT</button>
+            <button onClick="plantilla_reset('NARANJA','XXXX')">RESET NARANJA XXXX</button>
+            <button onClick="plantilla_reset('NARANJA','UNA_DE_CUATRO')">RESET NARANJA</button>
+            <button onClick="plantilla_reset('AZUL','UNA_DE_CUATRO')">RESET AZUL</button>
+            <button onClick="crono_SET(90,88)">CRONO SET 88/90</button>
+            <button onClick="crono_SET(60,15)">CRONO SET 15/60</button>
+            <button onClick="crono_SET(30,30)">CRONO SET 30/30</button>
+            <button onClick="crono_SET(30,5)">CRONO SET 5/30</button>
+            <button onClick="crono_IN()">CRONO IN</button>
+            <button onClick="crono_PLAY()">CRONO PLAY</button>
+            <button onClick="crono_UPDATE(5)">CRONO UPD 5</button>
+            <button onClick="crono_UPDATE(32)">CRONO UPD 32</button>
+            <button onClick="crono_UPDATE(10)">CRONO UPD 10</button>
+            <button onClick="crono_STOP()">CRONO STOP</button>
+            <button onClick="crono_OUT()">CRONO OUT</button>
         </div>
     </body>
 

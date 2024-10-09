@@ -25,18 +25,38 @@ svg {
 }
 
 #cronoProgresion {
-    fill: #00ff26;
-    stroke: #ff0000;
-    stroke-width: 25px;
-    /* transform-origin: 135px 0; */
+    fill: none;
+    stroke: #ffffff;
+    stroke-width: 23px;
     transform: rotate(-90deg);
     opacity: 0;
 }
 
 #cronoCentro {
-    fill: #00ff26;
+    fill: url(#gradienteNaranja);
+    clip-path: url(#mascaCrono);
+    -webkit-clip-path: url(#mascaCrono);
     stroke: #ffffff;
-    stroke-width: 4px;
-    transform-origin: 100px 50px;
+    stroke-width: 3px;
     opacity: 1;
+}
+#cronoCentro5s {
+    fill: url(#gradientePeligro);
+    opacity: 1;
+}
+
+.divSegundos {
+    /* background-color: #1e00ff78; */
+    clip-path: url(#mascaSegundos);
+    -webkit-clip-path: url(#mascaSegundos);
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+#textoSegundos {
+    /* background-color: rgba(255, 255, 0, 0.47); */
+    font-size: 90px;
+    font-family: fuenteBlack;
+    text-shadow: 6px 6px 3px var(--sombra);
 }
