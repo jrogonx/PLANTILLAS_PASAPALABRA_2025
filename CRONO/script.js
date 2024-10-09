@@ -270,12 +270,16 @@ const cronoProgresion_SET = (tiempoTotalProgresion, tiempoRestanteProgresion) =>
     })
 
     tlAviso5s.clear()
-    tlAviso5s.yoyo(true)
-    tlAviso5s.repeat(8)
+    tlAviso5s.repeat(4)
     tlAviso5s.to(cronoCentro5s, {
         duration: 0.5,
         opacity: 1,
-        ease: "none",
+        ease: "power1.out",
+    })
+    tlAviso5s.to(cronoCentro5s, {
+        duration: 0.5,
+        opacity: 0,
+        ease: "power1.out",
     })
     tlAviso5s.pause()
 }
@@ -297,6 +301,6 @@ const anillo_IN = () => {
         delay: 0.2,
         duration: 0.9,
         strokeDashoffset: 0,
-        ease: "power2.out",
+        ease: "power1.out",
     })
 }
