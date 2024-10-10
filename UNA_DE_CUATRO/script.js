@@ -57,8 +57,8 @@ const coordenadasAdornos = [
     },
     {
         variante: "HALLOWEEN",
-        videoAdornoPrePregunta: ["xxxxxxxxx", 0, 0],
-        videoAdornoOpciones: ["xxxxxxxxx", 377, 108],
+        videoAdornoPrePregunta: ["./../__COMUN/media/UNA_DE_CUATRO/HALLOWEEN/CALABAZA_MURCIELAGO_", 0, 0],
+        videoAdornoTextoPregunta: ["./../__COMUN/media/UNA_DE_CUATRO/HALLOWEEN/TELARANA.webm", -448, -843],
     },
     {
         variante: "NAVIDAD",
@@ -153,7 +153,12 @@ const plantilla_reset = (_equipo, _variante = "DIARIO", delay = 0) => {
         resetearAdornos()
 
         // --------------- PROVI --------------------
-        document.getElementById("titulo").innerHTML = "UNA DE CUATRO - " + varianteActual
+        document.getElementById("titulo").innerHTML =
+            "<span style='margin-right: 20px; width: 80px; height: 30px; display: inline-block; background-color: #" +
+            (equipoActual == "NARANJA" ? "ff7b00" : "00aeff") +
+            ";'></span>" +
+            "UNA DE CUATRO - " +
+            varianteActual
     }, delay)
 }
 
@@ -271,6 +276,9 @@ const pregunta_IN = (pregunta, delay = 0) => {
         ajustarEspaciadoLetras(divTextoPreguntaA)
 
         // ------------------ VARIANTES ------------------
+        videoAdornoPrePregunta.currentTime = 0
+        videoAdornoTextoPregunta.currentTime = 0
+
         switch (varianteActual) {
             case "DIARIO":
                 videoAdornoPrePregunta.play()
@@ -284,6 +292,17 @@ const pregunta_IN = (pregunta, delay = 0) => {
                     duration: 1,
                     delay: 1,
                     opacity: coordenadasActual.videoAdornoTextoPregunta[3],
+                })
+                break
+            case "HALLOWEEN":
+                videoAdornoPrePregunta.play()
+
+                videoAdornoTextoPregunta.currentTime = 0.2
+                videoAdornoTextoPregunta.play()
+
+                gsap.to([videoAdornoPrePregunta, videoAdornoTextoPregunta], {
+                    duration: 1,
+                    opacity: 1,
                 })
                 break
 
@@ -328,9 +347,19 @@ const pregunta_OUT = (delay = 0) => {
                     opacity: 0,
                     onComplete: () => videoAdornoTextoPregunta.pause(),
                 })
-
                 break
-
+            case "HALLOWEEN":
+                gsap.to(videoAdornoPrePregunta, {
+                    duration: 0.3,
+                    left: coordenadasActual.videoAdornoPrePregunta[1] + 400,
+                    opacity: 0,
+                })
+                gsap.to(videoAdornoTextoPregunta, {
+                    duration: 0.3,
+                    left: coordenadasActual.videoAdornoTextoPregunta[1] + 400,
+                    opacity: 0,
+                })
+                break
             default:
                 break
         }
@@ -590,6 +619,21 @@ const resetearAdornos = () => {
                 videoAdornoOpciones.style.top = coordenadasActual.videoAdornoOpciones[2] + "px"
 
                 break
+            case "HALLOWEEN":
+                videoAdornoPrePregunta.src = coordenadasActual.videoAdornoPrePregunta[0] + equipoActual + ".webm"
+                videoAdornoPrePregunta.style.left = coordenadasActual.videoAdornoPrePregunta[1] + "px"
+
+                videoAdornoTextoPregunta.src = coordenadasActual.videoAdornoTextoPregunta[0]
+                videoAdornoTextoPregunta.style.left = coordenadasActual.videoAdornoTextoPregunta[1] + "px"
+                videoAdornoTextoPregunta.style.top = coordenadasActual.videoAdornoTextoPregunta[2] + "px"
+                videoAdornoTextoPregunta.style.opacity = 0
+                videoAdornoTextoPregunta.loop = false
+                videoAdornoTextoPregunta.ontimeupdate = (e) => {
+                    // console.log("ontimeupdate ->", e.target.currentTime)
+                    if (e.target.currentTime > 2) videoAdornoTextoPregunta.pause()
+                }
+                videoAdornoTextoPregunta.playbackRate = 0.3 //coordenadasActual.videoAdornoTextoPregunta[4]
+                break
 
             default:
                 break
@@ -598,15 +642,12 @@ const resetearAdornos = () => {
 
     videoAdornoPrePregunta.autoplay = false
     videoAdornoPrePregunta.loop = false
-    videoAdornoPrePregunta.currentTime = 0
     videoAdornoPrePregunta.pause()
 
     videoAdornoTextoPregunta.autoplay = false
-    videoAdornoTextoPregunta.currentTime = 0
     videoAdornoTextoPregunta.pause()
 
     videoAdornoOpciones.autoplay = false
     videoAdornoOpciones.loop = false
-    videoAdornoOpciones.currentTime = 0
     videoAdornoOpciones.pause()
 }

@@ -64,7 +64,7 @@
         <div id="container">
             <!-- <img
                 class="ref"
-                src="./../__COMUN/media/UNA_DE_CUATRO/CARNAVAL/UNA_DE_CUATRO_ref.png"
+                src="./../__COMUN/media/UNA_DE_CUATRO/HALLOWEEN/UNA_DE_CUATRO_ref.png"
             /> -->
 
             <div id="divPregunta">
@@ -145,14 +145,82 @@
         <div id="botonera">
             <button onClick="plantilla_reload()">RELOAD</button>
             <button onClick="plantilla_ver()">VER</button>
-            <button onClick="plantilla_reset('NARANJA','DIARIO')">RESET NARANJA DIARIO</button>
-            <button onClick="plantilla_reset('AZUL','CARNAVAL')">RESET AZUL CARNA</button>
-            <button onClick="plantilla_reset('AZUL','DIARIO')">RESET AZUL</button>
+            <span class="espacio"></span>
+            <button
+                onClick="plantilla_reset('NARANJA','DIARIO')"
+                class="botPeqN"
+            >
+                RST N DIARIO
+            </button>
+            <button
+                onClick="plantilla_reset('AZUL','DIARIO')"
+                class="botPeqA"
+            >
+                RST A DIARIO
+            </button>
+            <span class="espacio"></span>
+            <button
+                onClick="plantilla_reset('NARANJA','CARNAVAL')"
+                class="botPeqN"
+            >
+                RST N CARNAV
+            </button>
+            <button
+                onClick="plantilla_reset('AZUL','CARNAVAL')"
+                class="botPeqA"
+            >
+                RST A CARNAV
+            </button>
+
+            <span class="espacio"></span>
+            <button
+                onClick="plantilla_reset('NARANJA','HALLOWEEN')"
+                class="botPeqN"
+            >
+                RST N HALLOW
+            </button>
+            <button
+                onClick="plantilla_reset('AZUL','HALLOWEEN')"
+                class="botPeqA"
+            >
+                RST A HALLOW
+            </button>
+            <span class="espacio"></span>
+
+            <button
+                onClick="plantilla_reset('NARANJA','NAVIDAD')"
+                class="botPeqN"
+            >
+                RST N NAVI
+            </button>
+            <button
+                onClick="plantilla_reset('AZUL','NAVIDAD')"
+                class="botPeqA"
+            >
+                RST A NAVI
+            </button>
+            <span class="espacio"></span>
+
+            <button
+                onClick="plantilla_reset('NARANJA','VERANO')"
+                class="botPeqN"
+            >
+                RST N VERA
+            </button>
+            <button
+                onClick="plantilla_reset('AZUL','VERANO')"
+                class="botPeqA"
+            >
+                RST A VERA
+            </button>
+            <span class="espacio"></span>
+
             <button onClick="respuestas_IN('MAR ADENTRO#DIRTY DANCING#JUNGLA DE CRISTAL AZUL#AVATAR')">RESPUESTAS IN</button>
             <button onClick="respuestas_OUT()">RESPUESTAS OUT</button>
             <button onClick="pregunta_IN('ES EL ÚLTIMO LARGOMETRAJE ESPAÑOL EN GANAR EL ÓSCAR A LA MEJOR PELÍCULA DE HABLA NO INGLESA')">PREGUNTA IN</button>
             <button onClick="pregunta_OUT()">PREGUNTA OUT</button>
             <button onClick="preguntaRespuestas_OUT()">PREG / RESPS OUT</button>
+            <span class="espacio"></span>
 
             <button onClick="resuelveRespuesta(2,'F')">RESUELVE 2 F</button>
             <button
