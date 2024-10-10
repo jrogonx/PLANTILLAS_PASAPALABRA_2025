@@ -62,10 +62,10 @@
         </svg>
 
         <div id="container">
-            <img
+            <!-- <img
                 class="ref"
                 src="./../__COMUN/media/UNA_DE_CUATRO/CARNAVAL/UNA_DE_CUATRO_ref.png"
-            />
+            /> -->
 
             <div id="divPregunta">
                 <img id="imgPastillaPregunta" />
@@ -79,6 +79,8 @@
                     class="imgExtremoPregunta"
                     src="./../__COMUN/media/UNA_DE_CUATRO/PASTILLA_EXTREMO_DCHA.png"
                 />
+
+                <video id="videoAdornoTextoPregunta"></video>
 
                 <div
                     id="divTextoPreguntaA"
@@ -135,21 +137,16 @@
                 </div>
             </div>
 
-            <video
-                id="videoAdornoOpciones"
-                src="./../__COMUN/media/UNA_DE_CUATRO/CARNAVAL/MASCARA_IN.webm"
-                autoplay
-            ></video>
-
-            <video id="videoAdornoLetras"></video>
+            <video id="videoAdornoOpciones"></video>
+            <video id="videoAdornoPrePregunta"></video>
         </div>
 
-        <div class="titulo">UNA DE CUATRO</div>
+        <div id="titulo">UNA DE CUATRO</div>
         <div id="botonera">
             <button onClick="plantilla_reload()">RELOAD</button>
             <button onClick="plantilla_ver()">VER</button>
-            <button onClick="plantilla_reset('NARANJA','CARNAVAL')">RESET NARANJA CARNA</button>
-            <button onClick="plantilla_reset('NARANJA','DIARIO')">RESET NARANJA</button>
+            <button onClick="plantilla_reset('NARANJA','DIARIO')">RESET NARANJA DIARIO</button>
+            <button onClick="plantilla_reset('AZUL','CARNAVAL')">RESET AZUL CARNA</button>
             <button onClick="plantilla_reset('AZUL','DIARIO')">RESET AZUL</button>
             <button onClick="respuestas_IN('MAR ADENTRO#DIRTY DANCING#JUNGLA DE CRISTAL AZUL#AVATAR')">RESPUESTAS IN</button>
             <button onClick="respuestas_OUT()">RESPUESTAS OUT</button>
