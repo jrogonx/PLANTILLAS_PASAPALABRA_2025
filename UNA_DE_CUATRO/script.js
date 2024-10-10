@@ -52,7 +52,7 @@ const coordenadasAdornos = [
         videoAdornoTextoPregunta: ["./../__COMUN/media/UNA_DE_CUATRO/CARNAVAL/CONFETTI.webm", -460, -848, 0.5, 0.5, true],
 
         // src / left naranja / top / left azul
-        videoAdornoOpciones: ["./../__COMUN/media/UNA_DE_CUATRO/CARNAVAL/MASCARA_IN.webm", 377, 108, 1188],
+        videoAdornoOpciones: ["./../__COMUN/media/UNA_DE_CUATRO/CARNAVAL/MASCARA_IN.webm", 377, 108, 1188, false],
         videoAdornoOpciones_OUT: "./../__COMUN/media/UNA_DE_CUATRO/CARNAVAL/MASCARA_OUT.webm",
     },
     {
@@ -62,8 +62,11 @@ const coordenadasAdornos = [
     },
     {
         variante: "NAVIDAD",
-        videoAdornoPrePregunta: ["xxxxxxxxx", 0, 0],
-        videoAdornoOpciones: ["xxxxxxxxx", 377, 108],
+        videoAdornoPrePregunta: ["./../__COMUN/media/UNA_DE_CUATRO/NAVIDAD/ESTRELLITAS.webm", 0, 0],
+
+        videoAdornoTextoPregunta: ["./../__COMUN/media/UNA_DE_CUATRO/NAVIDAD/NIEVE5.webm", -460, -848, true],
+        // src / left naranja / top / left azul
+        videoAdornoOpciones: ["./../__COMUN/media/UNA_DE_CUATRO/NAVIDAD/COPOS_COLGANDO.webm", -826, 0, -20, true],
     },
     {
         variante: "VERANO",
@@ -220,6 +223,14 @@ const respuestas_IN = (_respuestas, delay = 0) => {
                 videoAdornoOpciones.play()
                 break
 
+            case "NAVIDAD":
+                videoAdornoOpciones.play()
+                gsap.to(videoAdornoOpciones, {
+                    duration: 1,
+                    top: coordenadasActual.videoAdornoOpciones[2],
+                })
+                break
+
             default:
                 break
         }
@@ -235,6 +246,15 @@ const respuestas_OUT = (delay = 0) => {
                 videoAdornoOpciones.currentTime = 0.8
                 videoAdornoOpciones.play()
                 break
+
+            case "NAVIDAD":
+                gsap.to(videoAdornoOpciones, {
+                    duration: 0.6,
+                    top: -300,
+                    onComplete: () => videoAdornoOpciones.pause(),
+                })
+                break
+
             default:
                 break
         }
@@ -284,16 +304,18 @@ const pregunta_IN = (pregunta, delay = 0) => {
                 videoAdornoPrePregunta.play()
 
                 break
+
             case "CARNAVAL":
                 videoAdornoPrePregunta.play()
-                videoAdornoTextoPregunta.play()
 
+                videoAdornoTextoPregunta.play()
                 gsap.to(videoAdornoTextoPregunta, {
                     duration: 1,
                     delay: 1,
                     opacity: coordenadasActual.videoAdornoTextoPregunta[3],
                 })
                 break
+
             case "HALLOWEEN":
                 videoAdornoPrePregunta.play()
 
@@ -302,6 +324,18 @@ const pregunta_IN = (pregunta, delay = 0) => {
 
                 gsap.to([videoAdornoPrePregunta, videoAdornoTextoPregunta], {
                     duration: 1,
+                    opacity: 1,
+                })
+                break
+
+            case "NAVIDAD":
+                videoAdornoPrePregunta.play()
+
+                videoAdornoTextoPregunta.play()
+                gsap.to(videoAdornoTextoPregunta, {
+                    duration: 1,
+                    delay: 1,
+                    // opacity: coordenadasActual.videoAdornoTextoPregunta[3],
                     opacity: 1,
                 })
                 break
@@ -348,6 +382,7 @@ const pregunta_OUT = (delay = 0) => {
                     onComplete: () => videoAdornoTextoPregunta.pause(),
                 })
                 break
+
             case "HALLOWEEN":
                 gsap.to(videoAdornoPrePregunta, {
                     duration: 0.3,
@@ -360,6 +395,15 @@ const pregunta_OUT = (delay = 0) => {
                     opacity: 0,
                 })
                 break
+
+            case "NAVIDAD":
+                gsap.to(videoAdornoTextoPregunta, {
+                    duration: 0.6,
+                    opacity: 0,
+                    onComplete: () => videoAdornoTextoPregunta.pause(),
+                })
+                break
+
             default:
                 break
         }
@@ -600,6 +644,7 @@ const resetearAdornos = () => {
             case "DIARIO":
                 videoAdornoPrePregunta.src = coordenadasActual.videoAdornoPrePregunta[0] + equipoActual + ".webm"
                 break
+
             case "CARNAVAL":
                 videoAdornoPrePregunta.src = coordenadasActual.videoAdornoPrePregunta[0]
 
@@ -617,8 +662,10 @@ const resetearAdornos = () => {
                     videoAdornoOpciones.style.left = coordenadasActual.videoAdornoOpciones[3] + "px"
                 }
                 videoAdornoOpciones.style.top = coordenadasActual.videoAdornoOpciones[2] + "px"
+                videoAdornoOpciones.loop = coordenadasActual.videoAdornoOpciones[4]
 
                 break
+
             case "HALLOWEEN":
                 videoAdornoPrePregunta.src = coordenadasActual.videoAdornoPrePregunta[0] + equipoActual + ".webm"
                 videoAdornoPrePregunta.style.left = coordenadasActual.videoAdornoPrePregunta[1] + "px"
@@ -635,6 +682,26 @@ const resetearAdornos = () => {
                 videoAdornoTextoPregunta.playbackRate = 0.3 //coordenadasActual.videoAdornoTextoPregunta[4]
                 break
 
+            case "NAVIDAD":
+                videoAdornoPrePregunta.src = coordenadasActual.videoAdornoPrePregunta[0]
+
+                videoAdornoTextoPregunta.src = coordenadasActual.videoAdornoTextoPregunta[0]
+                videoAdornoTextoPregunta.style.left = coordenadasActual.videoAdornoTextoPregunta[1] + "px"
+                videoAdornoTextoPregunta.style.top = coordenadasActual.videoAdornoTextoPregunta[2] + "px"
+                videoAdornoTextoPregunta.style.opacity = 0
+                videoAdornoTextoPregunta.loop = coordenadasActual.videoAdornoTextoPregunta[3]
+
+                videoAdornoOpciones.src = coordenadasActual.videoAdornoOpciones[0]
+                if (equipoActual == "NARANJA") {
+                    videoAdornoOpciones.style.left = coordenadasActual.videoAdornoOpciones[1] + "px"
+                } else {
+                    videoAdornoOpciones.style.left = coordenadasActual.videoAdornoOpciones[3] + "px"
+                }
+                videoAdornoOpciones.style.top = "-300px"
+                videoAdornoOpciones.loop = coordenadasActual.videoAdornoOpciones[4]
+
+                break
+
             default:
                 break
         }
@@ -648,6 +715,5 @@ const resetearAdornos = () => {
     videoAdornoTextoPregunta.pause()
 
     videoAdornoOpciones.autoplay = false
-    videoAdornoOpciones.loop = false
     videoAdornoOpciones.pause()
 }
