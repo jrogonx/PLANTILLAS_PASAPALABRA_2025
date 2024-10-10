@@ -167,8 +167,8 @@ const respuestas_IN = (_respuestas, delay = 0) => {
         for (let ix = 0; ix < 4; ix++) {
             divTextoOpciones[ix].innerHTML = divTextoSolucionOpciones[ix].innerHTML = respuestas[ix]
 
-            ajustarEspacioLetras(divTextoOpciones[ix])
-            ajustarEspacioLetras(divTextoSolucionOpciones[ix])
+            ajustarTamanoFuente_segunAltura(divTextoOpciones[ix], TAMANO_FUENTE_OPCIONES)
+            ajustarTamanoFuente_segunAltura(divTextoSolucionOpciones[ix], TAMANO_FUENTE_OPCIONES)
 
             const retraso = ix * 0.15
 
@@ -233,7 +233,7 @@ const pregunta_IN = (pregunta, delay = 0) => {
         divTextoPreguntaA.innerHTML = pregunta
         divTextoPreguntaB.innerHTML = ""
 
-        ajustarEspacioLetras(divTextoPreguntaA)
+        ajustarEspaciadoLetras(divTextoPreguntaA)
 
         videoAdornoLetras.play()
 
@@ -350,12 +350,12 @@ const reemplazaPreguntaRespuestas = (_nuevaPregunta, _nuevasRespuestas, delay = 
             preguntaActual = "A"
         }
         preguntaNueva.innerHTML = _nuevaPregunta
-        ajustarEspacioLetras(preguntaNueva)
+        ajustarEspaciadoLetras(preguntaNueva)
 
         const nuevasRespuestas = _nuevasRespuestas.split("#")
         for (let ix2 = 0; ix2 < 4; ix2++) {
             divTextoOpciones[ix2].innerHTML = nuevasRespuestas[ix2]
-            ajustarEspacioLetras(divTextoOpciones[ix2])
+            ajustarTamanoFuente_segunAltura(divTextoOpciones[ix2], TAMANO_FUENTE_OPCIONES)
         }
 
         gsap.to(divSolucionOpciones[ix], {
@@ -370,7 +370,7 @@ const reemplazaPreguntaRespuestas = (_nuevaPregunta, _nuevasRespuestas, delay = 
                 })
 
                 divTextoSolucionOpciones[ix].innerHTML = nuevasRespuestas[ix]
-                ajustarEspacioLetras(divTextoSolucionOpciones[ix])
+                ajustarTamanoFuente_segunAltura(divTextoSolucionOpciones[ix], TAMANO_FUENTE_OPCIONES)
 
                 imgSolucionAciertoOpciones[ix].style.opacity = 0
                 imgSolucionFalloOpciones[ix].style.opacity = 0
